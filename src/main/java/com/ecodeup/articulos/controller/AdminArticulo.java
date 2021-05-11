@@ -49,7 +49,6 @@ public class AdminArticulo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Estoy en el doget");
 		String action = request.getParameter("action");
 		
 		try {
@@ -92,12 +91,10 @@ public class AdminArticulo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Estoy en el dopost");
 		doGet(request, response);
 	}
 	
 	private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		//mostrar(request, response);
 		RequestDispatcher dispatcher= request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
