@@ -49,6 +49,7 @@ public class AdminArticulo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("DOGET");
 		String action = request.getParameter("action");
 		
 		try {
