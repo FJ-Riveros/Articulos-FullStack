@@ -1,0 +1,64 @@
+#barraEnviar,
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 900px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .col-sm-4 {
+    width: 50% !important;
+  }
+}
+
+.font-weight-bold {
+  font-weight: 900;
+}
+
+.font-weight-medium {
+  font-weight: 600;
+}
+
+.btn-md {
+  width: 110px;
+}
+
+.min-height {
+  height: 90px;
+}
+
+.light-gray {
+  background-color: #f3f4f5 !important;
+}
+
+.delete {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.modify {
+  display: none;
+  position: absolute;
+  right: 35px;
+  top: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-image: url(../media/pencil.png);
+}
+
+.saltoLinea {
+  display: block;
+}
