@@ -15,15 +15,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<h1>Administrar Artículos</h1>
-	<table border="1" width="50%" align="center">
-		<tr>
-			<td align="center"><a href="adminArticulo?action=nuevo">Nuevo</a></td>			
-		</tr>
-		<tr>
-			<td align="center"><a href="adminArticulo?action=mostrar">Mostrar</a></td>
-		</tr>
-	</table>
 	
 	<form action="adminArticulo?action=register" method="post">
     <div class="container-md mt-4">

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  
 import com.ecodeup.articulos.dao.ArticuloDAO;
 import com.ecodeup.articulos.model.Articulo;
+import com.google.gson.Gson;
  
 /**
  * Servlet implementation class AdminArticulo
@@ -49,7 +50,6 @@ public class AdminArticulo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("DOGET");
 		String action = request.getParameter("action");
 		
 		try {
@@ -76,13 +76,15 @@ public class AdminArticulo extends HttpServlet {
 			case "eliminar":
 				eliminar(request, response);
 				break;
+			case "enviarArticulos":
+				enviarArticulos(request, response);
+				break;
 			default:
 				break;
 			}			
 		} catch (SQLException e) {
 			e.getStackTrace();
 		}
-		
 		
 	}
  
@@ -97,6 +99,8 @@ public class AdminArticulo extends HttpServlet {
 	
 	private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher= request.getRequestDispatcher("index.jsp");
+		List<Articulo> listaArticulos= articuloDAO.listarArticulos();
+		request.setAttribute("lista", listaArticulos);
 		dispatcher.forward(request, response);
 	}
  
@@ -148,4 +152,13 @@ public class AdminArticulo extends HttpServlet {
 				}
 		
 	}
+	
+	private void enviarArticulos(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		List<Articulo> listaArticulos= articuloDAO.listarArticulos();
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    String json = new Gson().toJson(listaArticulos);
+	    response.getWriter().write(json);
+	}
+	
 }
