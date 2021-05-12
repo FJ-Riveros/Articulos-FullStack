@@ -101,7 +101,7 @@ public class AdminArticulo extends HttpServlet {
 	}
  
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		Articulo articulo = new Articulo(0, request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Double.parseDouble(request.getParameter("cantidad")));
+		Articulo articulo = new Articulo(0, request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")));
 		articuloDAO.insertar(articulo);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -130,16 +130,22 @@ public class AdminArticulo extends HttpServlet {
 	}
 	
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		Articulo articulo = new Articulo(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Double.parseDouble(request.getParameter("existencia")));
+		Articulo articulo = new Articulo(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("existencia")));
 		articuloDAO.actualizar(articulo);
 		index(request, response);
 	}
 	
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		Articulo articulo = articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
-		articuloDAO.eliminar(articulo);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);
+		//Si el usuario refresca la página después de borrar un artículo el servidor no cae, porque se comprueba que el ID a borrar exista.
+				if(articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id"))) == null) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("adminArticulo?action=mostrar");
+					dispatcher.forward(request, response);
+				}else {
+					Articulo articulo = articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
+					articuloDAO.eliminar(articulo);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("adminArticulo?action=mostrar");
+					dispatcher.forward(request, response);
+				}
 		
 	}
 }

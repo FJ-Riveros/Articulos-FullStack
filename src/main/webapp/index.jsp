@@ -25,27 +25,27 @@
 		</tr>
 	</table>
 	
-	<form action="#" method="get">
+	<form action="adminArticulo?action=register" method="post">
     <div class="container-md mt-4">
       <h1>Alta Productos</h1>
       <div class="mb-3 col-6">
         <label for="labelNombre" class="form-label">Nombre</label>
         <input type="text" class="form-control form-control-sm" id="nombre"
-          placeholder="No se admiten números ni carácteres especiales" required>
+          name="nombre" placeholder="No se admiten números ni carácteres especiales" required>
       </div>
       <div class="mb-3 col-12">
         <label for="labelDescripcion" class="form-label">Descripción</label>
-        <textarea style="resize: none" class="form-control" id="descripcion" rows="6"
+        <textarea style="resize: none" class="form-control" id="descripcion" name="descripcion" rows="6"
           placeholder="Máximo de 100 carácteres" required></textarea>
       </div>
       <div class="mb-3 col-8">
         <label for="labelPrecio" class="form-label">Precio</label>
-        <input type="text" class="form-control w-25" id="precio" placeholder="" required>
+        <input type="text" class="form-control w-25" name="precio" id="precio" placeholder="" required>
       </div>
       <label for="labelStock" class="form-label">Stock</label>
       <div class="row align-items-end ">
         <div class="pe-0 col-4">
-          <input type="text" class="form-control w-50" id="stock" placeholder="" required>
+          <input type="text" class="form-control w-50" name="cantidad" id="stock" placeholder="" required>
         </div>
         <div class="col-md-2 offset-md-6 " id="barraEnviar">
           <button type="submit" class="btn btn-primary btn-md" id="enviar">Añadir</button>

@@ -36,7 +36,7 @@ public class ArticuloDAO {
 		statement.setString(2, articulo.getNombre());
 		statement.setString(3, articulo.getDescripcion());
 		statement.setDouble(4, articulo.getPrecio());
-		statement.setDouble(5, articulo.getExistencia());
+		statement.setInt(5, articulo.getExistencia());
 		
 		boolean rowInserted = statement.executeUpdate() > 0;
 		statement.close();
@@ -59,7 +59,7 @@ public class ArticuloDAO {
 			String nombre = resulSet.getString("nomArticulo");
 			String descripcion = resulSet.getString("descripcionArticulo");
 			Double precio = resulSet.getDouble("precioArticulo");
-			Double existencia = resulSet.getDouble("stockArticulo");
+			int existencia = resulSet.getInt("stockArticulo");
 			Articulo articulo = new Articulo(id, nombre, descripcion, precio, existencia);
 			listaArticulos.add(articulo);
 		}
@@ -80,7 +80,7 @@ public class ArticuloDAO {
 		ResultSet res = statement.executeQuery();
 		if (res.next()) {
 			articulo = new Articulo(res.getInt("ID"), res.getString("nomArticulo"),
-					res.getString("descripcionArticulo"), res.getDouble("precioArticulo"), res.getDouble("stockArticulo"));
+					res.getString("descripcionArticulo"), res.getDouble("precioArticulo"), res.getInt("stockArticulo"));
 		}
 		res.close();
 		con.desconectar();

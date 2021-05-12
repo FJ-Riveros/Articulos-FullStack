@@ -4,10 +4,10 @@ public class Articulo {
 	private int id;
 	private String nombre;
 	private String descripcion;
-	private double existencia;
+	private int existencia;
 	private double precio;
 	
-	public Articulo(int id, String nombre, String descripcion, double precio, double existencia) {
+	public Articulo(int id, String nombre, String descripcion, double precio, int existencia) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -33,10 +33,10 @@ public class Articulo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public double getExistencia() {
+	public int getExistencia() {
 		return existencia;
 	}
-	public void setExistencia(double existencia) {
+	public void setExistencia(int existencia) {
 		this.existencia = existencia;
 	}
 	public double getPrecio() {
