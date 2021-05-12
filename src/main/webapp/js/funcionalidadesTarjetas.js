@@ -3,12 +3,15 @@ import { adjuntarTarjeta } from "./adjuntaTarjetas.js";
 import { obtenerEntradas } from "./manipuladorJSON.js";
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
 import { rellenaCamposModificacion } from "./rellenaCamposModificacion.js";
+import {devuelveArticulos} from "./AJAX.js";
 
 //Recorre el registro y muestra todas las Cards
 export function muestraCardsActuales(registro) {
-  for (let i = 0; i < registro.length; i++) {
-    adjuntarTarjeta(entradas[i], i + 1);
-  }
+  $.get("adminArticulo", {action: "enviarArticulos"}).done((articulos)=>{
+	$.each(articulos, (index, articulo) =>{
+		adjuntarTarjeta(articulo);
+	})
+	})
 }
 
 //Elimina la visualización de las Cards

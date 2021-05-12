@@ -1,5 +1,20 @@
+
+
 export let devuelveArticulos = () => {
-	$.get("adminArticulo", {action: "enviarArticulos"}).done((articulos)=>{
-	console.log(articulos[4]);
+	var articulosRecibidos;
+	/*$.get("adminArticulo", {action: "enviarArticulos"}).done((articulos)=>{
+	$.each(articulos, (index, articulo) =>{
+		console.log(articulo);
 	})
+	})*/
+	$.get("adminArticulo", {action: "enviarArticulos"}, function(articulos){
+		guardaArticulos(articulos);
+		
+	})
+	
+	let guardaArticulos = (input) =>{
+		articulosRecibidos = input;
+	}
+	console.log(articulosRecibidos + "no");
+	return articulosRecibidos;
 }

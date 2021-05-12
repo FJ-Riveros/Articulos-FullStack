@@ -34,25 +34,25 @@ function getValues() {
 }
 
 //Crea el cuerpo de las entradas
-export const adjuntarTarjeta = (registro, numRegistro) => {
+export const adjuntarTarjeta = (articulo) => {
   var imagenDelete = "media/basura.png";
   var imagenModificar = "media/pencil.png";
   $(".tarjetas").append(
     `
     <div class="col-sm-4 mb-4">
-      <div class="card shadow" id=Card-${numRegistro}>
-        <div class="card-header p-2 font-weight-bold light-gray">${registro.nombre}<img src="${imagenDelete}" width="32px" height="32px" class="delete">
+      <div class="card shadow" id=Card-${articulo.id}>
+        <div class="card-header p-2 font-weight-bold light-gray">${articulo.nombre}<img src="${imagenDelete}" width="32px" height="32px" class="delete">
           <span role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight" class="modify"></span></div>
         <div class=" text-secondary p-2 min-height texto-principal">
-          <p class="card-text">${registro.descripcion}</p>
+          <p class="card-text">${articulo.descripcion}</p>
         </div>
         <div class="row justify-content-between p-2 text-secondary">
           <div class="col-4 font-weight-medium">
-              ${registro.precio}€
+              ${articulo.precio}€
             </div>
             <div class=" col-7 flex-end font-weight-medium ">
-              Cantidad: ${registro.stock}
+              Cantidad: ${articulo.existencia}
             </div>
           </div>
       </div>
