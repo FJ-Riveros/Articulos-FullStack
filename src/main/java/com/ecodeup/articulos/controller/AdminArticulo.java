@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ecodeup.articulos.dao.ArticuloDAO;
 import com.ecodeup.articulos.model.Articulo;
 import com.google.gson.Gson;
+import com.mysql.fabric.xmlrpc.base.Param;
  
 /**
  * Servlet implementation class AdminArticulo
@@ -79,6 +80,9 @@ public class AdminArticulo extends HttpServlet {
 			case "enviarArticulos":
 				enviarArticulos(request, response);
 				break;
+			case "borrarArticulo":
+        eliminaArticulo(request, response);
+        break;
 			default:
 				break;
 			}			
@@ -160,5 +164,10 @@ public class AdminArticulo extends HttpServlet {
 	    String json = new Gson().toJson(listaArticulos);
 	    response.getWriter().write(json);
 	}
+	
+	private void eliminaArticulo(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+	  Articulo articulo = articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("idArticulo")));
+    articuloDAO.eliminar(articulo);
+  }
 	
 }

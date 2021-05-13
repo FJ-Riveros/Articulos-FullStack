@@ -3,15 +3,20 @@ import { adjuntarTarjeta } from "./adjuntaTarjetas.js";
 import { obtenerEntradas } from "./manipuladorJSON.js";
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
 import { rellenaCamposModificacion } from "./rellenaCamposModificacion.js";
-import {devuelveArticulos} from "./AJAX.js";
+import {devuelveArticulos, borraArticulo} from "./AJAX.js";
+
 
 //Recorre el registro y muestra todas las Cards
 export function muestraCardsActuales() {
-  //Devuelve los artículos alojados en la BDD
-  let articulos = devuelveArticulos();
-  $.each(articulos, (index, articulo) =>{
-    adjuntarTarjeta(articulo);
-  })
+	return new Promise(resolve =>{//Devuelve los artículos alojados en la BDD
+  devuelveArticulos().then(articulos=>{
+  	$.each(articulos, (index, articulo) =>{
+    	adjuntarTarjeta(articulo);
+    	//listennerCard(".card")
+ 	 })
+ 	 resolve(true);
+  })})
+  
 }
 
 //Elimina la visualización de las Cards
@@ -23,12 +28,13 @@ export function destruyeDisplayCards() {
 var id;
 //Aplica los listenners de las Cards
 export function listennerCard(idCard) {
+	
   $(`${idCard} div.card-header span.modify`).click(function (e) {
     e.preventDefault();
     id = $(this).parents(".card").attr("id").slice(5);
 
     //Rellenamos los campos del OffCanvas con los datos originales de la tarjeta a modificar
-    rellenaCamposModificacion(id - 1);
+    rellenaCamposModificacion(id);
 
     var myOffcanvas = document.getElementById("offcanvasRight");
 
@@ -55,8 +61,9 @@ export function listennerCard(idCard) {
     //Eliminamos la entrada
     eliminaRegistro(id);
     //Presentamos las entradas
-    presentacionCards(obtenerEntradas(), ".card");
+    presentacionCards(".cards");
   });
+  console.log("estoy en el listenner");
   $(idCard).hover(
     function () {
       // over
@@ -71,23 +78,25 @@ export function listennerCard(idCard) {
   );
 }
 
-//Elimina el registro totalmente
+//Elimina el registro deseado
 function eliminaRegistro(id) {
-  eliminaEntrada(id - 1);
+  borraArticulo(id);
 }
 
-export function presentacionCards(nameCard) {
+export async function presentacionCards(nameCard) {
   //Elimina el display de las Cards
   destruyeDisplayCards();
-
+    
   //Muestra las Cards alojadas en la BDD
-  muestraCardsActuales();
-
+  let espera = await muestraCardsActuales();
+  if(espera){
+    listennerCard(".card");
+  }
   //Listenner del contenido de las cards
-  listennerCard(nameCard);
+  //listennerCard(".card")
 }
 
 //Nos devuelve el ID de la tarjeta que ha solicitado una modificación
 export function IDTarjetaAModificar() {
-  return id - 1;
+  return id;
 }
