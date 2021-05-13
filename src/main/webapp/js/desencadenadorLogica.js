@@ -1,7 +1,8 @@
 import { aplicaEventListennersYFiltros } from "./aplicaEventsYFiltros.js";
-import {devuelveArticulos} from "./AJAX.js";
+import { generadorCard } from "./adjuntaTarjetas.js";
 $().ready(() => {
   //Esta funcion aplica los Event Listenners y filtros a todos los campos del form
   aplicaEventListennersYFiltros();
-  console.log(devuelveArticulos() + "funciona");
+  //Cargamos directamente las tarjetas de la BDD
+  generadorCard();
 });

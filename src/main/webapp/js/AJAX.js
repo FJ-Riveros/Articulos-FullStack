@@ -1,5 +1,6 @@
 
 var articulosRecibidos;
+//Devuelve todos los artículos que se encuentran en la BDD
 export let devuelveArticulos = () => {
 	
 	/*$.get("adminArticulo", {action: "enviarArticulos"}).done((articulos)=>{
@@ -8,17 +9,6 @@ export let devuelveArticulos = () => {
 	})
 	})*/
 	
-	
-	
-	
-	/*$.get("adminArticulo", {action: "enviarArticulos"}, function(articulos){
-		guardaArticulos(articulos);
-		
-	})*/
-	
-	let guardaArticulos = (input) =>{
-		articulosRecibidos = input;
-	}
 	$.ajax({
     url: "adminArticulo",
     type: "GET",
