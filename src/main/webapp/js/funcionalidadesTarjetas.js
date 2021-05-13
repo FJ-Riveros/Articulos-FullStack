@@ -8,8 +8,9 @@ import {devuelveArticulos, borraArticulo} from "./AJAX.js";
 
 //Recorre el registro y muestra todas las Cards
 export function muestraCardsActuales() {
-	return new Promise(resolve =>{//Devuelve los artículos alojados en la BDD
-  devuelveArticulos().then(articulos=>{
+	return new Promise(resolve =>{
+	//Devuelve los artículos alojados en la BDD
+  	devuelveArticulos().then(articulos=>{
   	$.each(articulos, (index, articulo) =>{
     	adjuntarTarjeta(articulo);
     	//listennerCard(".card")
@@ -56,12 +57,21 @@ export function listennerCard(idCard) {
     });
   });
 
-  $(`${idCard} div.card-header img.delete`).click(function () {
+  $(`${idCard} div.card-header img.delete`).click(async function () {
     let id = $(this).parents(".card").attr("id").slice(5);
     //Eliminamos la entrada
-    eliminaRegistro(id);
-    //Presentamos las entradas
-    presentacionCards(".cards");
+    let borrado = () =>{
+      return new Promise(resolve => {
+        eliminaRegistro(id);
+        resolve(true);
+      })
+    }
+    let esperaBorrado = await borrado();
+    console.log(esperaBorrado);
+    if(esperaBorrado){
+      //Presentamos las entradas
+      presentacionCards(".cards");
+    }
   });
   console.log("estoy en el listenner");
   $(idCard).hover(
@@ -88,8 +98,8 @@ export async function presentacionCards(nameCard) {
   destruyeDisplayCards();
     
   //Muestra las Cards alojadas en la BDD
-  let espera = await muestraCardsActuales();
-  if(espera){
+  let esperaCards = await muestraCardsActuales();
+  if(esperaCards){
     listennerCard(".card");
   }
   //Listenner del contenido de las cards
