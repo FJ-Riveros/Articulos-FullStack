@@ -7,11 +7,11 @@ import {devuelveArticulos} from "./AJAX.js";
 
 //Recorre el registro y muestra todas las Cards
 export function muestraCardsActuales(registro) {
-  $.get("adminArticulo", {action: "enviarArticulos"}).done((articulos)=>{
-	$.each(articulos, (index, articulo) =>{
-		adjuntarTarjeta(articulo);
-	})
-	})
+  //Devuelve los artículos alojados en la BDD
+  let articulos = devuelveArticulos();
+  $.each(articulos, (index, articulo) =>{
+    adjuntarTarjeta(articulo);
+  })
 }
 
 //Elimina la visualización de las Cards
