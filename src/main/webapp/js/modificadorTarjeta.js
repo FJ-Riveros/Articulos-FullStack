@@ -3,6 +3,7 @@ import {
   IDTarjetaAModificar,
   presentacionCards,
 } from "./funcionalidadesTarjetas.js";
+import { modificaArticulo} from "./AJAX.js";
 import { modificaEntrada, obtenerEntradas } from "./manipuladorJSON.js";
 const getValuesCanvas = () => {
   let valores = [];
@@ -22,7 +23,7 @@ export const modificaTarjeta = () => {
   let prueba = getValuesCanvas();
 
   //Modificamos la tarjeta con los datos recogidos
-  modificaEntrada(
+  modificaArticulo(
     IDTarjetaAModificar(),
     prueba[0],
     prueba[1],
@@ -31,7 +32,7 @@ export const modificaTarjeta = () => {
   );
 
   //Presentamos las cards
-  presentacionCards(obtenerEntradas(), ".card");
+  setTimeout(presentacionCards(".card"), 3000);
 
   //Vaciamos los campos para la siguiente utilización
   vaciarCampos(".groupModificacion");

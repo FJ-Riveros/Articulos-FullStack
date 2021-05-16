@@ -13,3 +13,9 @@ export let borraArticulo = (idArticulo) =>{
   $.post("adminArticulo?action=borrarArticulo&idArticulo=" + idArticulo).done(() =>{
   })
 }
+
+
+//Modifica el artículo indicado
+export let modificaArticulo = (idArticulo, name, description, price, existencias) =>{
+  $.post("adminArticulo", {action: "editar", id: idArticulo , nombre: name, descripcion : description, precio: price, existencia: existencias });
+}

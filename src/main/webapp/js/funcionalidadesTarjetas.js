@@ -68,10 +68,9 @@ export function listennerCard(idCard) {
     }
     let esperaBorrado = await borrado();
     console.log(esperaBorrado);
-      //Presentamos las entradas
+      //Presentamos las entradas ARREGLAR
       setTimeout(()=>presentacionCards(".cards"), 100);
   });
-  console.log("estoy en el listenner");
   $(idCard).hover(
     function () {
       // over
