@@ -8,8 +8,9 @@ import {
   compruebaCamposVacios,
   exponeCamposVacios,
 } from "./compruebaCampos.js";
-import { generadorCard } from "./adjuntaTarjetas.js";
+import { generadorCard, getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
+import {addArticulo} from "./AJAX.js";
 export let aplicaEventListennersYFiltros = () => {
   /*Validamos el campo nombre y aplicamos el event listenner
   junto con una restriccion de 15 caracteres max. Con true indicamos que queremos comprobar
@@ -36,8 +37,10 @@ export let aplicaEventListennersYFiltros = () => {
       compruebaCampos(".campoInvalido") &&
       compruebaCamposVacios(".form-control")
     ) {
+      let valores = getValues();
+      addArticulo(valores[0], valores[1], valores[2], valores[3]);
       //Comienza el proceso de generación de la Card
-      generadorCard();
+      setTimeout(generadorCard(), 100);
     } else {
       //Señala los campos vacios del form
       exponeCamposVacios(".form-control");

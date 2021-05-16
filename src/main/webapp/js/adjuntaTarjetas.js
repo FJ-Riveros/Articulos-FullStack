@@ -23,7 +23,7 @@ export function generadorCard() {
 }
 
 //Introduzce los valores de los input en un Array
-function getValues() {
+export function getValues() {
   let valores = [];
   let i = 0;
   (valores[i++] = $("#nombre").val()),

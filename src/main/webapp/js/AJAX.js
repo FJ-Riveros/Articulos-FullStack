@@ -3,7 +3,7 @@
 export let devuelveArticulos = () => {
 	return $.ajax({
     url: "adminArticulo",
-    type: "GET", // set to false so order of operations is correct
+    type: "GET",
     data: {action: "enviarArticulos"},
     });
 }
@@ -19,3 +19,8 @@ export let borraArticulo = (idArticulo) =>{
 export let modificaArticulo = (idArticulo, name, description, price, existencias) =>{
   $.post("adminArticulo", {action: "editar", id: idArticulo , nombre: name, descripcion : description, precio: price, existencia: existencias });
 }
+
+//Crea un articulo
+export let addArticulo = (name, description, price, existencias) =>{
+  $.post("adminArticulo", {action: "register", nombre: name, descripcion: description, precio: price, cantidad: existencias})
+  };
