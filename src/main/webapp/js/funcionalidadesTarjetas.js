@@ -68,10 +68,8 @@ export function listennerCard(idCard) {
     }
     let esperaBorrado = await borrado();
     console.log(esperaBorrado);
-    if(esperaBorrado){
       //Presentamos las entradas
-      presentacionCards(".cards");
-    }
+      setTimeout(()=>presentacionCards(".cards"), 100);
   });
   console.log("estoy en el listenner");
   $(idCard).hover(
@@ -99,9 +97,8 @@ export async function presentacionCards(nameCard) {
     
   //Muestra las Cards alojadas en la BDD
   let esperaCards = await muestraCardsActuales();
-  if(esperaCards){
-    listennerCard(".card");
-  }
+  listennerCard(".card");
+  
   //Listenner del contenido de las cards
   //listennerCard(".card")
 }
