@@ -4,7 +4,6 @@ import {
   campoCorrecto,
 } from "./modificadoresVisualesCampos.js";
 import { campoVacio } from "./compruebaCampos.js";
-import { busquedaNombreExistente } from "./manipuladorJSON.js";
 
 /*Valida el campo que se le pase con restricciones de numero máximo de carácteres, sólo letras y
 añade el event listenner correspondiente, si tenemos true comprobamos también que el valor del campo
@@ -29,14 +28,14 @@ export function validacionYEventListenner(
         "No puede contener números o carácteres especiales"
       );
       //Comprueba que el nombre no exista en otra tarjeta y el campo no esté vacio
-    } else if (
-      busquedaNombreExistente($(idElemento).val()) &&
+    } /*else if (
+      //busquedaNombreExistente($(idElemento).val()) &&
       !campoVacio(idElemento) &&
       comprobacionRepetidos
     ) {
       adjuntaError(idElemento, "El nombre indicado ya existe en otra tarjeta");
       //Comprueba que el campo no esté vacio
-    } else if (!campoVacio(idElemento)) {
+    }*/ else if (!campoVacio(idElemento)) {
       campoCorrecto(idElemento);
     }
   });

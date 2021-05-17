@@ -4,7 +4,7 @@ import {
   presentacionCards,
 } from "./funcionalidadesTarjetas.js";
 import { modificaArticulo} from "./AJAX.js";
-import { modificaEntrada, obtenerEntradas } from "./manipuladorJSON.js";
+//import { modificaEntrada, obtenerEntradas } from "./manipuladorJSON.js";
 const getValuesCanvas = () => {
   let valores = [];
   let i = 0;

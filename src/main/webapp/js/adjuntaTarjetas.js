@@ -1,16 +1,7 @@
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
-import { creaNuevaEntrada, obtenerEntradas } from "./manipuladorJSON.js";
 import { presentacionCards } from "./funcionalidadesTarjetas.js";
 //Obtiene los valores del form, los introduce en el registro y resetea el form
 export function generadorCard() {
-  //Obtenemos los valores del registro
-  let values = getValues();
-
-  //Introducimos la nueva entrada en el registro
-  creaNuevaEntrada(values[0], values[1], values[2], values[3]);
-
-  //Obtenemos todos los valores del registro
-  var entradasRegistro = obtenerEntradas();
 
   //presenta las cards
   presentacionCards(".card");
