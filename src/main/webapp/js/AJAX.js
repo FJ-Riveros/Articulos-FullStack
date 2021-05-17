@@ -24,3 +24,8 @@ export let modificaArticulo = (idArticulo, name, description, price, existencias
 export let addArticulo = (name, description, price, existencias) =>{
   $.post("adminArticulo", {action: "register", nombre: name, descripcion: description, precio: price, cantidad: existencias})
   };
+  
+//Devuelve el articulo indicado por el id
+export let devuelveArticulo= (id) =>{
+  $.get("adminArticulo", {action: "devuelveArticulo", identificador: id})
+  };

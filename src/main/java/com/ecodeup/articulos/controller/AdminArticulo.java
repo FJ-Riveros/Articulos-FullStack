@@ -83,8 +83,12 @@ public class AdminArticulo extends HttpServlet {
 			case "borrarArticulo":
         eliminaArticulo(request, response);
         break;
-			default:
+			
+			case "devuelveArticulo":
+			  devuelveArticulo(request, response);
 				break;
+				
+			default:
 			}			
 		} catch (SQLException e) {
 			e.getStackTrace();
@@ -167,4 +171,12 @@ public class AdminArticulo extends HttpServlet {
     articuloDAO.eliminar(articulo);
   }
 	
+	private void devuelveArticulo(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+	  Articulo articuloDeseado= articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("identificador")));
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    String respuesta = new Gson().toJson(articuloDeseado);
+    response.getWriter().write(respuesta);
+	  
+	}
 }

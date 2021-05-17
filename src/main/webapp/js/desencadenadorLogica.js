@@ -6,5 +6,4 @@ $().ready(() => {
   aplicaEventListennersYFiltros();
   //Cargamos directamente las tarjetas de la BDD
   generadorCard();
-  console.log("me ejecuto");
 });
