@@ -4,7 +4,8 @@ import {
   campoCorrecto,
 } from "./modificadoresVisualesCampos.js";
 import { campoVacio } from "./compruebaCampos.js";
-
+//import {comproacion } from "./aplicaEventsYFiltros.js";
+import{modificaComprobacion} from "./apruebaForm.js";
 /*Valida el campo que se le pase con restricciones de numero máximo de carácteres, sólo letras y
 añade el event listenner correspondiente, si tenemos true comprobamos también que el valor del campo
 no se repita en las tarjetas*/
@@ -14,6 +15,13 @@ export function validacionYEventListenner(
   comprobacionRepetidos
 ) {
   $(`${idElemento}`).focusout(() => {
+    //Seteamos en el array comprobacion que no es correcto, si finalmente es correcto se sobreescribe
+    if(idElemento === "#nombre"){
+        modificaComprobacion(0, false);
+      }else if(idElemento === "#descripcion"){
+      	modificaComprobacion(1, false);
+      }
+      
     eliminaError(idElemento);
     //Comprueba si cumple con la longitud
     if (!filtroLongitud(idElemento, caracteresMax)) {
@@ -37,6 +45,12 @@ export function validacionYEventListenner(
       //Comprueba que el campo no esté vacio
     }*/ else if (!campoVacio(idElemento)) {
       campoCorrecto(idElemento);
+      //Es correcto, así que lo indicamos en el array
+      if(idElemento === "#nombre"){
+        modificaComprobacion(0, true);
+      }else if(idElemento === "#descripcion"){
+      	modificaComprobacion(1, true);
+      }
     }
   });
 }
@@ -44,9 +58,11 @@ export function validacionYEventListenner(
 //Filtro especifico para el campo Stock(solo enteros)
 export function filtroStock(idElemento) {
   $(`${idElemento}`).focusout(() => {
+  	modificaComprobacion(3, false);
     eliminaError(idElemento);
     if (filtroSoloEnteros(idElemento)) {
       campoCorrecto(idElemento);
+      modificaComprobacion(3, true);
     } else if (!campoVacio(idElemento)) {
       adjuntaError(idElemento, "Este campo solo admite enteros");
     }
@@ -56,9 +72,11 @@ export function filtroStock(idElemento) {
 //Filtro especifico para el campo Precio(pueden ser enteros o decimales)
 export function filtroPrecio(idElemento) {
   $(`${idElemento}`).focusout(() => {
+  	modificaComprobacion(2, false);
     eliminaError(idElemento);
     if (filtroSoloNúmerosEnterosODecimales(idElemento)) {
       campoCorrecto(idElemento);
+      modificaComprobacion(2, true);
     } else if (!campoVacio(idElemento)) {
       adjuntaError(idElemento, "Este campo solo admite enteros o decimales");
     }
