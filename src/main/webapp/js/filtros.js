@@ -4,7 +4,6 @@ import {
   campoCorrecto,
 } from "./modificadoresVisualesCampos.js";
 import { campoVacio } from "./compruebaCampos.js";
-//import {comproacion } from "./aplicaEventsYFiltros.js";
 import{modificaComprobacion} from "./apruebaForm.js";
 /*Valida el campo que se le pase con restricciones de numero máximo de carácteres, sólo letras y
 añade el event listenner correspondiente, si tenemos true comprobamos también que el valor del campo

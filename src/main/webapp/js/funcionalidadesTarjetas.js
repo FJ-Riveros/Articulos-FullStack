@@ -55,7 +55,7 @@ export async function listennerCard(idCard) {
     });
   });
 
-  $(`${idCard} div.card-header img.delete`).click(async function () {
+  $(`${idCard} div.card-header img.delete`).click( function () {
     let id = $(this).parents(".card").attr("id").slice(5);
     //Eliminamos la entrada y mostramos las cards
     eliminaRegistro(id);
@@ -89,9 +89,6 @@ export async function presentacionCards(nameCard) {
   
   //Listenner del contenido de las cards
   listennerCard(".card");
-  
-  
-  
 }
 
 //Nos devuelve el ID de la tarjeta que ha solicitado una modificación
