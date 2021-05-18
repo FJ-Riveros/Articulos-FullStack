@@ -9,7 +9,7 @@ import {
   exponeCamposVacios,
 } from "./compruebaCampos.js";
 import{reseteaComprobacion, validaComprobacion} from "./apruebaForm.js";
-import { generadorCard, getValues } from "./adjuntaTarjetas.js";
+import {  getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
 import {addArticulo} from "./AJAX.js";
 
@@ -40,9 +40,11 @@ export let aplicaEventListennersYFiltros = () => {
     ) {
       //Obtiene los valores del form y los inserta en la base de datos
       let valores = getValues();
+      
+      //Insertamos en la BDD el articulo nuevo y presentamos las cards
       addArticulo(valores[0], valores[1], valores[2], valores[3]);
-      //Comienza el proceso de generación de la Card
-      setTimeout(generadorCard(), 100);
+      
+      //Reseteamos el form
       reseteaComprobacion();
     } else {
       //Señala los campos vacios del form

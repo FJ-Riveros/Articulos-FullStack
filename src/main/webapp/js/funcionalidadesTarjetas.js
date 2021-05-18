@@ -27,7 +27,7 @@ export function destruyeDisplayCards() {
 //Sirve para almacenar el valor de la tarjeta que ha solicitado una modificación
 var id;
 //Aplica los listenners de las Cards
-export function listennerCard(idCard) {
+export async function listennerCard(idCard) {
 	
   $(`${idCard} div.card-header span.modify`).click(function (e) {
     e.preventDefault();
@@ -58,17 +58,8 @@ export function listennerCard(idCard) {
 
   $(`${idCard} div.card-header img.delete`).click(async function () {
     let id = $(this).parents(".card").attr("id").slice(5);
-    //Eliminamos la entrada
-    let borrado = () =>{
-      return new Promise(resolve => {
-        eliminaRegistro(id);
-        resolve(true);
-      })
-    }
-    let esperaBorrado = await borrado();
-    console.log(esperaBorrado);
-      //Presentamos las entradas ARREGLAR
-      setTimeout(()=>presentacionCards(".cards"), 100);
+    //Eliminamos la entrada y presentamos las demás
+    eliminaRegistro(id);
   });
   $(idCard).hover(
     function () {
@@ -95,10 +86,10 @@ export async function presentacionCards(nameCard) {
     
   //Muestra las Cards alojadas en la BDD
   let esperaCards = await muestraCardsActuales();
-  listennerCard(".card");
+  
   
   //Listenner del contenido de las cards
-  //listennerCard(".card")
+  listennerCard(".card");
 }
 
 //Nos devuelve el ID de la tarjeta que ha solicitado una modificación

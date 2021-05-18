@@ -15,7 +15,7 @@ const getValuesCanvas = () => {
   return valores;
 };
 
-export const modificaTarjeta = () => {
+export async function modificaTarjeta (){
   //Cerramos el offCanvas
   $("#closeWindow").click();
 
@@ -29,11 +29,23 @@ export const modificaTarjeta = () => {
     prueba[1],
     prueba[2],
     prueba[3]
-  );
+    );
+  /*let promise = new Promise ((resolve) =>{
+  modificaArticulo(
+    IDTarjetaAModificar(),
+    prueba[0],
+    prueba[1],
+    prueba[2],
+    prueba[3]
+    );
+    resolve(true);
+  })
+  let esperaPromesa = await promise;
+  console.log(esperaPromesa);
 
   //Presentamos las cards
-  setTimeout(presentacionCards(".card"), 3000);
-
+  presentacionCards(".card");
+*/
   //Vaciamos los campos para la siguiente utilización
   vaciarCampos(".groupModificacion");
 };
