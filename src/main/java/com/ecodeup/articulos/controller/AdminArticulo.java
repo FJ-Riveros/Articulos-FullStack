@@ -175,8 +175,8 @@ public class AdminArticulo extends HttpServlet {
 	  Articulo articuloDeseado= articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("identificador")));
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
-    String respuesta = new Gson().toJson(articuloDeseado);
-    response.getWriter().write(respuesta);
+    String json = new Gson().toJson(articuloDeseado);
+    response.getWriter().write(json);
 	  
 	}
 }

@@ -14,7 +14,7 @@ export function validacionYEventListenner(
   caracteresMax,
   comprobacionRepetidos
 ) {
-  $(`${idElemento}`).focusout(() => {
+  $(`${idElemento}`).keyup(() => {
     //Seteamos en el array comprobacion que no es correcto, si finalmente es correcto se sobreescribe
     if(idElemento === "#nombre"){
         modificaComprobacion(0, false);
@@ -57,7 +57,7 @@ export function validacionYEventListenner(
 
 //Filtro especifico para el campo Stock(solo enteros)
 export function filtroStock(idElemento) {
-  $(`${idElemento}`).focusout(() => {
+  $(`${idElemento}`).keyup(() => {
   	modificaComprobacion(3, false);
     eliminaError(idElemento);
     if (filtroSoloEnteros(idElemento)) {
@@ -71,7 +71,7 @@ export function filtroStock(idElemento) {
 
 //Filtro especifico para el campo Precio(pueden ser enteros o decimales)
 export function filtroPrecio(idElemento) {
-  $(`${idElemento}`).focusout(() => {
+  $(`${idElemento}`).keyup(() => {
   	modificaComprobacion(2, false);
     eliminaError(idElemento);
     if (filtroSoloNúmerosEnterosODecimales(idElemento)) {
