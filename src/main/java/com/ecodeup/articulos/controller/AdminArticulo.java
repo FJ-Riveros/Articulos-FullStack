@@ -25,7 +25,6 @@ public class AdminArticulo extends HttpServlet {
 	ArticuloDAO articuloDAO;
  
 	public void init() {
-		System.out.println("Ejecutando el init");
 		String jdbcURL = getServletContext().getInitParameter("jdbcURL");
 		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
 		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
@@ -55,27 +54,13 @@ public class AdminArticulo extends HttpServlet {
 		
 		try {
 			switch (action) {
-			case "index":
-				index(request, response);
-				break;
-			case "nuevo":
-				System.out.print("Response: " + response);
-				nuevo(request, response);
-				break;
+			
 			case "register":
 				registrar(request, response);
 				break;
-			case "mostrar":
-				mostrar(request, response);
-				break;
-			case "showedit":
-				showEditar(request, response);
-				break;	
+			
 			case "editar":
 				editar(request, response);
-				break;
-			case "eliminar":
-				eliminar(request, response);
 				break;
 			case "enviarArticulos":
 				enviarArticulos(request, response);
@@ -105,57 +90,14 @@ public class AdminArticulo extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		RequestDispatcher dispatcher= request.getRequestDispatcher("index.jsp");
-		List<Articulo> listaArticulos= articuloDAO.listarArticulos();
-		request.setAttribute("lista", listaArticulos);
-		dispatcher.forward(request, response);
-	}
- 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		Articulo articulo = new Articulo(0, request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")));
 		articuloDAO.insertar(articulo);
 	}
 	
-	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/vista/register.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	
-	private void mostrar(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException , ServletException{
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/vista/mostrar.jsp");
-		List<Articulo> listaArticulos= articuloDAO.listarArticulos();
-		request.setAttribute("lista", listaArticulos);
-		dispatcher.forward(request, response);
-	}	
-	
-	private void showEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		Articulo articulo = articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
-		request.setAttribute("articulo", articulo);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/vista/editar.jsp");
-		dispatcher.forward(request, response);
-	}
-	
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		Articulo articulo = new Articulo(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("existencia")));
 		articuloDAO.actualizar(articulo);
-		index(request, response);
-	}
-	
-	private void eliminar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		//Si el usuario refresca la página después de borrar un artículo el servidor no cae, porque se comprueba que el ID a borrar exista.
-				if(articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id"))) == null) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("adminArticulo?action=mostrar");
-					dispatcher.forward(request, response);
-				}else {
-					Articulo articulo = articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
-					articuloDAO.eliminar(articulo);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("adminArticulo?action=mostrar");
-					dispatcher.forward(request, response);
-				}
-		
 	}
 	
 	private void enviarArticulos(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
@@ -176,7 +118,6 @@ public class AdminArticulo extends HttpServlet {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     String json = new Gson().toJson(articuloDeseado);
-    response.getWriter().write(json);
-	  
+    response.getWriter().write(json);  
 	}
 }

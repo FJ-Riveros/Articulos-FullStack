@@ -59,7 +59,7 @@
         aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <form action="#index" method="get">
+      <form action="#index" method="get" accept-charset=utf-8>
         <div class="container mt-4">
           <div class="mb-3 col-12">
             <label for="labelNombre" class="form-label saltoLinea">Nombre</label>

@@ -21,14 +21,13 @@ public class ArticuloDAO {
 	private Connection connection;
  
 	public ArticuloDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) throws SQLException {
-		System.out.println(jdbcURL);
 		con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
 	}
  
 	// insertar artículo
 	public boolean insertar(Articulo articulo) throws SQLException {
 		String sql = "INSERT INTO articuloscards (ID, nomArticulo, descripcionArticulo, precioArticulo, stockArticulo) VALUES (?,?,?,?,?)";
-		System.out.println(articulo.getDescripcion());
+		
 		con.conectar();
 		connection = con.getJdbcConnection();
 		PreparedStatement statement = connection.prepareStatement(sql);
@@ -102,7 +101,6 @@ public class ArticuloDAO {
 		statement.setDouble(3, articulo.getPrecio());
 		statement.setDouble(4, articulo.getExistencia());
 		statement.setInt(5, articulo.getId());
-		System.out.println("ID modificaion: " + articulo.getId());
  
 		rowActualizar = statement.executeUpdate() > 0;
 		statement.close();
