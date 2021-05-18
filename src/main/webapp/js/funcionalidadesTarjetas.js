@@ -1,5 +1,4 @@
 import { adjuntarTarjeta } from "./adjuntaTarjetas.js";
-//import { obtenerEntradas } from "./manipuladorJSON.js";
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
 import { rellenaCamposModificacion } from "./rellenaCamposModificacion.js";
 import {devuelveArticulos, borraArticulo} from "./AJAX.js";
