@@ -12,7 +12,6 @@ export function muestraCardsActuales() {
   	devuelveArticulos().then(articulos=>{
   	$.each(articulos, (index, articulo) =>{
     	adjuntarTarjeta(articulo);
-    	//listennerCard(".card")
  	 })
  	 resolve(true);
   })})
@@ -58,8 +57,9 @@ export async function listennerCard(idCard) {
 
   $(`${idCard} div.card-header img.delete`).click(async function () {
     let id = $(this).parents(".card").attr("id").slice(5);
-    //Eliminamos la entrada y presentamos las demás
+    //Eliminamos la entrada y mostramos las cards
     eliminaRegistro(id);
+     
   });
   $(idCard).hover(
     function () {
@@ -87,9 +87,11 @@ export async function presentacionCards(nameCard) {
   //Muestra las Cards alojadas en la BDD
   let esperaCards = await muestraCardsActuales();
   
-  
   //Listenner del contenido de las cards
   listennerCard(".card");
+  
+  
+  
 }
 
 //Nos devuelve el ID de la tarjeta que ha solicitado una modificación

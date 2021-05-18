@@ -1,8 +1,5 @@
 import { vaciarCampos } from "./modificadoresVisualesCampos.js";
-import {
-  IDTarjetaAModificar,
-  presentacionCards,
-} from "./funcionalidadesTarjetas.js";
+import {IDTarjetaAModificar} from "./funcionalidadesTarjetas.js";
 import { modificaArticulo} from "./AJAX.js";
 //import { modificaEntrada, obtenerEntradas } from "./manipuladorJSON.js";
 const getValuesCanvas = () => {
@@ -15,7 +12,7 @@ const getValuesCanvas = () => {
   return valores;
 };
 
-export async function modificaTarjeta (){
+export function modificaTarjeta (){
   //Cerramos el offCanvas
   $("#closeWindow").click();
 
@@ -30,22 +27,7 @@ export async function modificaTarjeta (){
     prueba[2],
     prueba[3]
     );
-  /*let promise = new Promise ((resolve) =>{
-  modificaArticulo(
-    IDTarjetaAModificar(),
-    prueba[0],
-    prueba[1],
-    prueba[2],
-    prueba[3]
-    );
-    resolve(true);
-  })
-  let esperaPromesa = await promise;
-  console.log(esperaPromesa);
 
-  //Presentamos las cards
-  presentacionCards(".card");
-*/
   //Vaciamos los campos para la siguiente utilización
-  vaciarCampos(".groupModificacion");
+  	vaciarCampos(".groupModificacion");
 };

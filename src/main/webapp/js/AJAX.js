@@ -1,4 +1,4 @@
-import {presentacionCards} from "./funcionalidadesTarjetas.js";
+import {generadorCard} from "./adjuntaTarjetas.js";
 //Devuelve todos los artículos que se encuentran en la BDD
 export let devuelveArticulos = () => {
 	return $.ajax({
@@ -15,7 +15,7 @@ return $.ajax({
     type: "POST",
     data: {action: "borrarArticulo", idArticulo: idArticulo},
     success: function(result){
-     presentacionCards();
+     generadorCard();
     }
   });
     
@@ -28,7 +28,7 @@ export let modificaArticulo = (idArticulo, name, description, price, existencias
     type: "POST",
     data: {action: "editar", id: idArticulo , nombre: name, descripcion : description, precio: price, existencia: existencias},
     success: function(result){
-     presentacionCards();
+     generadorCard();
     }
   });
 }
@@ -41,7 +41,7 @@ export let addArticulo = (name, description, price, existencias) =>{
     type: "POST",
     data: {action: "register", nombre: name, descripcion: description, precio: price, cantidad: existencias},
     success: function(result){
-     presentacionCards();
+     generadorCard();
     }
   });
   };

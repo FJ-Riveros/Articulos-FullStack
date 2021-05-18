@@ -3,13 +3,14 @@ import {
   filtroStock,
   validacionYEventListenner,
 } from "./filtros.js";
+import { vaciarCampos,eliminaError} from "./modificadoresVisualesCampos.js";
 import {
   compruebaCampos,
   compruebaCamposVacios,
   exponeCamposVacios,
 } from "./compruebaCampos.js";
 import{reseteaComprobacion, validaComprobacion} from "./apruebaForm.js";
-import {  getValues } from "./adjuntaTarjetas.js";
+import { generadorCard, getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
 import {addArticulo} from "./AJAX.js";
 
@@ -40,10 +41,10 @@ export let aplicaEventListennersYFiltros = () => {
     ) {
       //Obtiene los valores del form y los inserta en la base de datos
       let valores = getValues();
-      
-      //Insertamos en la BDD el articulo nuevo y presentamos las cards
+      //Insertamos en la BDD y mostramos las cards
       addArticulo(valores[0], valores[1], valores[2], valores[3]);
-      
+      //vaciarCampos(".form-control");
+      // FALLA eliminaError(".form-control");
       //Reseteamos el form
       reseteaComprobacion();
     } else {
