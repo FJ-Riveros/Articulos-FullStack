@@ -56,8 +56,5 @@ export let compruebaNombre = (nombre) =>{
   	url:"adminArticulo",
   	type: "GET",
   	data: {action: "compruebaNombreRepetido", nombre: nombre},
-  	/*success: function(result){
-  		return result;
-  	}*/
   });
 };
