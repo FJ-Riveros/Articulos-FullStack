@@ -35,7 +35,6 @@ export let modificaArticulo = (idArticulo, name, description, price, existencias
 
 //Crea un articulo
 export let addArticulo = (name, description, price, existencias) =>{
-  //$.post("adminArticulo", {action: "register", nombre: name, descripcion: description, precio: price, cantidad: existencias})
   return $.ajax({
     url: "adminArticulo",
     type: "POST",
@@ -50,3 +49,15 @@ export let addArticulo = (name, description, price, existencias) =>{
 //Devuelve el articulo indicado por el id
 export let devuelveArticulo= (id) =>{
   return $.get("adminArticulo", {action: "devuelveArticulo", identificador: id})};
+  
+//Devuelve true si el nombre de articulo no existe, false en caso contrario
+export let compruebaNombre = (nombre) =>{
+  return $.ajax({
+  	url:"adminArticulo",
+  	type: "GET",
+  	data: {action: "compruebaNombreRepetido", nombre: nombre},
+  	/*success: function(result){
+  		return result;
+  	}*/
+  });
+};

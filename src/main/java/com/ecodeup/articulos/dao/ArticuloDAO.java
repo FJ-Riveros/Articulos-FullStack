@@ -88,14 +88,12 @@ public class ArticuloDAO {
 	}
  
 	// actualizar
-	//TERMINAR
 	public boolean actualizar(Articulo articulo) throws SQLException {
 		boolean rowActualizar = false;
 		String sql = "UPDATE articuloscards SET nomArticulo=?,descripcionArticulo=?,precioArticulo=?, stockArticulo=? WHERE ID=?";
 		con.conectar();
 		connection = con.getJdbcConnection();
 		PreparedStatement statement = connection.prepareStatement(sql);
-		//statement.setString(1, articulo.getCodigo());
 		statement.setString(1, articulo.getNombre());
 		statement.setString(2, articulo.getDescripcion());
 		statement.setDouble(3, articulo.getPrecio());
@@ -123,4 +121,22 @@ public class ArticuloDAO {
  
 		return rowEliminar;
 	}
+	
+	//Obtenemos si el nombre ya está registrado en la BDD
+	public boolean obtenerPorNombre(String nombre) throws SQLException {
+	  boolean resultado = false;
+	  String sql = "SELECT nomArticulo FROM articuloscards WHERE nomArticulo =?";
+	  con.conectar();
+	  connection = con.getJdbcConnection();
+	  PreparedStatement statement = connection.prepareStatement(sql);
+	  statement.setString(1, nombre);
+	  ResultSet resulSet = statement.executeQuery();
+	  if(resulSet.next()) {
+	    resultado = true; 
+	  }
+	  statement.close();
+	  con.desconectar();
+	  return resultado;
+	}
+	
 }

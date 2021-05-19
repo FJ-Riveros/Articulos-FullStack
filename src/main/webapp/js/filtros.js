@@ -5,6 +5,7 @@ import {
 } from "./modificadoresVisualesCampos.js";
 import { campoVacio } from "./compruebaCampos.js";
 import{modificaComprobacion} from "./apruebaForm.js";
+import {compruebaNombre} from "./AJAX.js";
 /*Valida el campo que se le pase con restricciones de numero máximo de carácteres, sólo letras y
 añade el event listenner correspondiente, si tenemos true comprobamos también que el valor del campo
 no se repita en las tarjetas*/
@@ -14,6 +15,9 @@ export function validacionYEventListenner(
   comprobacionRepetidos
 ) {
   $(`${idElemento}`).keyup(() => {
+  comprobacion();
+  async function comprobacion () { 	
+  let compruebaNombreExistente = await compruebaNombre($(idElemento).val());
     //Seteamos en el array comprobacion que no es correcto, si finalmente es correcto se sobreescribe
     if(idElemento === "#nombre"){
         modificaComprobacion(0, false);
@@ -35,14 +39,14 @@ export function validacionYEventListenner(
         "No puede contener números o carácteres especiales"
       );
       //Comprueba que el nombre no exista en otra tarjeta y el campo no esté vacio
-    } /*else if (
-      //busquedaNombreExistente($(idElemento).val()) &&
+    } else if (
+      compruebaNombreExistente &&
       !campoVacio(idElemento) &&
       comprobacionRepetidos
     ) {
       adjuntaError(idElemento, "El nombre indicado ya existe en otra tarjeta");
       //Comprueba que el campo no esté vacio
-    }*/ else if (!campoVacio(idElemento)) {
+    } else if (!campoVacio(idElemento)) {
       campoCorrecto(idElemento);
       //Es correcto, así que lo indicamos en el array
       if(idElemento === "#nombre"){
@@ -50,6 +54,7 @@ export function validacionYEventListenner(
       }else if(idElemento === "#descripcion"){
       	modificaComprobacion(1, true);
       }
+    }
     }
   });
 }

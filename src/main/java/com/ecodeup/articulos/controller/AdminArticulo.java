@@ -72,7 +72,9 @@ public class AdminArticulo extends HttpServlet {
 			case "devuelveArticulo":
 			  devuelveArticulo(request, response);
 				break;
-				
+			case "compruebaNombreRepetido":
+			  compruebaNombre(request, response);
+			  break;
 			default:
 			}			
 		} catch (SQLException e) {
@@ -120,4 +122,13 @@ public class AdminArticulo extends HttpServlet {
     String json = new Gson().toJson(articuloDeseado);
     response.getWriter().write(json);  
 	}
+	
+	private void compruebaNombre(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+    boolean nombreExistente= articuloDAO.obtenerPorNombre(request.getParameter("nombre"));
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    String json = new Gson().toJson(nombreExistente);
+    response.getWriter().write(json);  
+  }
+	
 }
