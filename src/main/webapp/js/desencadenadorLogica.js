@@ -6,4 +6,9 @@ $().ready(() => {
   aplicaEventListennersYFiltros();
   //Cargamos directamente las tarjetas de la BDD
   generadorCard();
+  
+  /*Aplica el listenner al switch de cambio de tema*/
+  $("#chk").change(() =>{
+    document.body.classList.toggle('dark');
+  });
 });
