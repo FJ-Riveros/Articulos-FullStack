@@ -11,7 +11,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!--  <link href="${pageContext.request.contextPath}/fontawesome/css/all.css" rel="stylesheet">--><!--load all styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   
@@ -26,17 +25,15 @@
       	</div>
       	
       	<div class="col-md-2 offset-md-6 flex-end">
-      	<!--  -->
-      
-	<input type="checkbox" class="checkbox" id="chk" />
-	<label class="label" for="chk">
-		<i class="fas fa-moon"></i>
-		<i class="fas fa-sun"></i>
-		<div class="ball"></div>
-	</label>
-</div>
-<!--  -->
-        </div>
+			<input type="checkbox" class="checkbox" id="chk" />
+			<label class="label" for="chk">
+				<i class="fas fa-moon"></i>
+				<i class="fas fa-sun"></i>
+				<div class="ball"></div>
+			</label>
+		</div>
+
+      </div>
       <div class="mb-3 col-6">
         <label for="labelNombre" class="form-label">Nombre</label>
         <input type="text" class="form-control form-control-sm" id="nombre"

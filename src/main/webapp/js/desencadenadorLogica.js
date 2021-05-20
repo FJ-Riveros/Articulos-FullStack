@@ -10,5 +10,6 @@ $().ready(() => {
   /*Aplica el listenner al switch de cambio de tema*/
   $("#chk").change(() =>{
     document.body.classList.toggle('dark');
+    $(".offcanvas-body").css("background-color: black");
   });
 });
