@@ -60,9 +60,20 @@
      </div>
   </form>
   <!---->
-
+  
   <!--Campo donde se almacenan las tarjetas-->
   <div class="container-md mt-4">
+  <!-- Select del orden -->
+  <label for="labelSelect" class="form-label">Ordenación</label>
+  <select class="form-select form-select-sm" aria-label="Ordenar por:">
+    <option selected value="Default">Creación</option>
+    <option value="1">Nombre</option>
+    <option value="2">Precio Ascendente</option>
+    <option value="3">Precio Descendente</option>
+    <option value="4">Stock Ascendente</option>
+    <option value="5">Stock Descendente</option>
+  </select>
+  <!--  -->
   <div class="row tarjetas mt-4"></div>
   </div>
   <!---->

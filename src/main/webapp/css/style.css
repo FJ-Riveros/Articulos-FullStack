@@ -21,6 +21,10 @@
   }
 }
 
+.form-select{
+	width: 25% !important;
+}
+
 .font-weight-bold {
   font-weight: 900;
 }
@@ -72,10 +76,7 @@ h1{
 	color: #212529;
 }
 
-
-/**/
-
-
+/*Modo noche*/
 * {
 	box-sizing: border-box;
 }
@@ -133,3 +134,4 @@ body.dark {
 .fa-sun {
 	color: #f39c12;
 }
+
