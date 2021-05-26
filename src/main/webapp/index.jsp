@@ -68,10 +68,10 @@
   <select class="form-select form-select-sm" aria-label="Ordenar por:">
     <option selected value="Default">Creación</option>
     <option value="Nom">Nombre</option>
-    <option value="Price Asc">Precio Ascendente</option>
-    <option value="Price Desc">Precio Descendente</option>
-    <option value="Stock Asc">Stock Ascendente</option>
-    <option value="Stock Desc">Stock Descendente</option>
+    <option value="PriceAsc">Precio Ascendente</option>
+    <option value="PriceDesc">Precio Descendente</option>
+    <option value="StockAsc">Stock Ascendente</option>
+    <option value="StockDesc">Stock Descendente</option>
   </select>
   <!--  -->
   <div class="row tarjetas mt-4"></div>

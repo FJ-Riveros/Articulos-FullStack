@@ -1,10 +1,14 @@
 import {generadorCard} from "./adjuntaTarjetas.js";
 //Devuelve todos los artículos que se encuentran en la BDD
+let orden = "Default";
+export let modificaOrden = (nuevaOrden) =>{
+	orden = nuevaOrden;
+}
 export let devuelveArticulos = () => {
 	return $.ajax({
     url: "adminArticulo",
     type: "GET",
-    data: {action: "enviarArticulos"},
+    data: {action: "enviarArticulos", orden: orden},
     });
 }
 
