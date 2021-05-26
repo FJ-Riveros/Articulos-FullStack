@@ -67,11 +67,11 @@
   <label for="labelSelect" class="form-label">Ordenación</label>
   <select class="form-select form-select-sm" aria-label="Ordenar por:">
     <option selected value="Default">Creación</option>
-    <option value="1">Nombre</option>
-    <option value="2">Precio Ascendente</option>
-    <option value="3">Precio Descendente</option>
-    <option value="4">Stock Ascendente</option>
-    <option value="5">Stock Descendente</option>
+    <option value="Nom">Nombre</option>
+    <option value="Price Asc">Precio Ascendente</option>
+    <option value="Price Desc">Precio Descendente</option>
+    <option value="Stock Asc">Stock Ascendente</option>
+    <option value="Stock Desc">Stock Descendente</option>
   </select>
   <!--  -->
   <div class="row tarjetas mt-4"></div>

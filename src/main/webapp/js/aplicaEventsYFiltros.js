@@ -12,7 +12,7 @@ import{reseteaComprobacion, validaComprobacion} from "./apruebaForm.js";
 import { getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
 import {addArticulo} from "./AJAX.js";
-
+import {ordenacion} from "./ordenacionCards.js";
 export let aplicaEventListennersYFiltros = () => {
   /*Validamos el campo nombre y aplicamos el event listenner
   junto con una restriccion de 15 caracteres max. Con true indicamos que queremos comprobar
@@ -51,6 +51,12 @@ export let aplicaEventListennersYFiltros = () => {
       exponeCamposVacios(".form-control");
     }
   });
+  
+  ///////////Event listenner del select que cambia el orden//////////////////
+  /*Aplicamos el event listenner para que cada vez que cambiemos el select del orden
+    se ejecute una llamada AJAX para volver a mostrar las cards ordenadas*/
+	ordenacion(".form-select");
+
 
   ///////////Events y Filtros de los campos del Offcanvas(modificacion de tarjetas)///////////
 
