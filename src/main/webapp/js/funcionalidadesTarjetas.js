@@ -54,12 +54,19 @@ export async function listennerCard(idCard) {
     });
   });
 
+  //Funcionalidad de añadir al carrito
+  /*$(`${idCard} div.card-header img.addIcon`).click( function () {
+    
+  });*/
+
+//Funcionalidad de borrado
   $(`${idCard} div.card-header img.delete`).click( function () {
     let id = $(this).parents(".card").attr("id").slice(5);
     //Eliminamos la entrada y mostramos las cards
     eliminaRegistro(id);
-     
   });
+
+  //Listenner del card para mostrar los iconos
   $(idCard).hover(
     function () {
       // over

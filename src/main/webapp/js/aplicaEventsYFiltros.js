@@ -57,7 +57,6 @@ export let aplicaEventListennersYFiltros = () => {
     se ejecute una llamada AJAX para volver a mostrar las cards ordenadas*/
 	ordenacion(".form-select");
 
-
   ///////////Events y Filtros de los campos del Offcanvas(modificacion de tarjetas)///////////
 
   /*Validamos el campo nombre y aplicamos el event listenner

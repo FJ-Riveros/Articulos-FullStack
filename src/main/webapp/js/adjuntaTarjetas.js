@@ -28,11 +28,14 @@ export function getValues() {
 export const adjuntarTarjeta = (articulo) => {
   var imagenDelete = "media/basura.png";
   var imagenModificar = "media/pencil.png";
+  var plus = "media/plus.png";
   $(".tarjetas").append(
     `
     <div class="col-sm-4 mb-4">
       <div class="card shadow" id=Card-${articulo.id}>
-        <div class="card-header p-2 font-weight-bold light-gray">${articulo.nombre}<img src="${imagenDelete}" width="32px" height="32px" class="delete">
+        <div class="card-header p-2 font-weight-bold light-gray">${articulo.nombre}<button type="button" class="botonAñadir" data-bs-toggle="modal" data-bs-target="#modalArticulo">
+  			<img src="${plus}" width="25px" height="25px" class="addIcon">
+		  </button><img src="${imagenDelete}" width="32px" height="32px" class="delete">
           <span role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight" class="modify"></span></div>
         <div class=" text-secondary p-2 min-height texto-principal">

@@ -63,6 +63,11 @@
   background-image: url(../media/pencil.png);
 }
 
+.addIcon{
+  display: none;
+  cursor: pointer;
+}
+
 .saltoLinea {
   display: block;
 }
@@ -147,4 +152,15 @@ body.dark {
 	background-color: white;
 	position: relative;
 	right: -10px;
+}
+
+.botonAñadir{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+  	right: 75px;
+  	top: 9px;
+  	cursor: pointer;
+	border:none;
+	background-color: #F3F4F5;
 }
