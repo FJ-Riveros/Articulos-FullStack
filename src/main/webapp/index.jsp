@@ -65,7 +65,10 @@
   <div class="container-md mt-4">
   <!-- Select del orden -->
   <label for="labelSelect" class="form-label">Ordenación</label>
-  <select class="form-select form-select-sm" aria-label="Ordenar por:">
+  
+  <div class="row align-items-end ">
+        <div class="pe-0 col-4">
+          <select class="form-select form-select-sm w-100" aria-label="Ordenar por:">
     <option selected value="Default">Creación</option>
     <option value="Nom">Nombre</option>
     <option value="PriceAsc">Precio Ascendente</option>
@@ -73,6 +76,16 @@
     <option value="StockAsc">Stock Ascendente</option>
     <option value="StockDesc">Stock Descendente</option>
   </select>
+        </div>
+        <div class="col-md-2 offset-md-6 iconoCart">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <i class="fas fa-shopping-cart"></i>
+</button>
+          
+        </div>
+     </div>
+     <!--  -->
+  
   <!--  -->
   <div class="row tarjetas mt-4"></div>
   </div>
@@ -113,9 +126,27 @@
     </div>
   </div>
   <!---->
-
-
-
+  <!-- Pop-over del carrito de compras normalmente oculto -->
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>Hola funciono</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    
   <script type="module" src="${pageContext.request.contextPath}/js/desencadenadorLogica.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
