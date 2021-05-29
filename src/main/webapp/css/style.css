@@ -159,8 +159,17 @@ body.dark {
 	height: 25px;
 	position: absolute;
   	right: 75px;
-  	top: 9px;
+  	top: 7px;
   	cursor: pointer;
 	border:none;
 	background-color: #F3F4F5;
+}
+
+.modal-dialog{
+	word-break: break-word
+}
+
+.alineacionRight{
+	text-align: right;
+	
 }

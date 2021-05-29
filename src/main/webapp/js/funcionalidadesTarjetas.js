@@ -2,6 +2,7 @@ import { adjuntarTarjeta } from "./adjuntaTarjetas.js";
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
 import { rellenaCamposModificacion } from "./rellenaCamposModificacion.js";
 import {devuelveArticulos, borraArticulo} from "./AJAX.js";
+import {addArticuloCarrito} from "./addArticuloCarrito.js";
 
 
 //Recorre el registro y muestra todas las Cards
@@ -55,11 +56,12 @@ export async function listennerCard(idCard) {
   });
 
   //Funcionalidad de añadir al carrito
-  /*$(`${idCard} div.card-header img.addIcon`).click( function () {
-    
-  });*/
+  $(`${idCard} div.card-header img.addIcon`).click( function () {
+	let id = $(this).parents(".card").attr("id").slice(5);
+	addArticuloCarrito(id);
+  });
 
-//Funcionalidad de borrado
+  //Funcionalidad de borrado
   $(`${idCard} div.card-header img.delete`).click( function () {
     let id = $(this).parents(".card").attr("id").slice(5);
     //Eliminamos la entrada y mostramos las cards

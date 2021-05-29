@@ -68,7 +68,7 @@
   
   <div class="row align-items-end ">
         <div class="pe-0 col-4">
-          <select class="form-select form-select-sm w-100" aria-label="Ordenar por:">
+          <select class="form-select form-select-sm w-50" aria-label="Ordenar por:">
     <option selected value="Default">Creación</option>
     <option value="Nom">Nombre</option>
     <option value="PriceAsc">Precio Ascendente</option>
@@ -125,6 +125,7 @@
     </div>
   </div>
   <!---->
+  
   <!-- Pop-over del carrito de compras normalmente oculto -->
   <!-- Modal -->
   <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModal" aria-hidden="true">
@@ -135,7 +136,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h1>Hola funciono</h1>
+          <div class="card w-75">
+  			<div class="card-body">
+    		  <h5 class="card-title">Card title</h5>
+    		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    		  <a href="#" class="btn btn-primary">Button</a>
+  		    </div>
+		  </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -150,11 +157,11 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h1>Articulo</h1>
+          <h1></h1>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
