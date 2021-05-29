@@ -142,10 +142,6 @@ body.dark {
 	
 }
 
-.modal-dialog{
-	display:hidden !important;
-}
-
 .botonSinEstilo{
 	border: none;
 	background-color: white;
