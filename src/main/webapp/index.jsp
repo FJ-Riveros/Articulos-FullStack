@@ -78,10 +78,9 @@
   </select>
         </div>
         <div class="col-md-2 offset-md-6 iconoCart">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <i class="fas fa-shopping-cart"></i>
-</button>
-          
+          <button type="button" class="botonSinEstilo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  			<i class="fas fa-shopping-cart"></i>
+		  </button>
         </div>
      </div>
      <!--  -->
