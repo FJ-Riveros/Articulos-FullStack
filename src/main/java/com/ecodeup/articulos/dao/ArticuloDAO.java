@@ -165,4 +165,21 @@ public class ArticuloDAO {
     return resultado;
   }
 
+  // insertar artículo en el carrito
+  public boolean insertarArticuloCarrito(int id) throws SQLException {
+    String sql = "INSERT INTO carrito (IdEmparejamiento, UsuarioPertenece, ArticuloPertenece) VALUES (?,?, ?)";
+
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setString(1, null);
+    // Siempre pertenece al usuario 1 como prueba
+    statement.setInt(2, 1);
+    statement.setInt(3, id);
+    boolean rowInserted = statement.executeUpdate() > 0;
+    statement.close();
+    con.desconectar();
+    return rowInserted;
+  }
+
 }

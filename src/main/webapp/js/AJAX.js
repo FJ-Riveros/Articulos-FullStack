@@ -62,3 +62,15 @@ export let compruebaNombre = (nombre) =>{
   	data: {action: "compruebaNombreRepetido", nombre: nombre},
   });
 };
+
+//Añade un articulo al carrito
+export let addItemCarrito = (id) =>{
+	return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "añadeArticuloCarrito", id: id},
+    success: function(){
+     generadorCard();
+    }
+  });
+}

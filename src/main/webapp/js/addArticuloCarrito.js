@@ -1,4 +1,4 @@
-import {devuelveArticulo} from "./AJAX.js";
+import {devuelveArticulo, addItemCarrito} from "./AJAX.js";
 import {
   adjuntaError,
   eliminaError,
@@ -44,6 +44,8 @@ export async function addArticuloCarrito(id){
 			}else if($(".inputAddCarrito")[1].value <= 0){
 			  adjuntaError(".inputAddCarrito", "No puedes añadir menos de 1")
 			}else{
+				//LLamada base de datos
+			  addItemCarrito(info.id);
 			  $(".cerrarArticulo").click();
 			  eliminaError(".inputAddCarrito");
 			  campoCorrecto(".inputAddCarrito");

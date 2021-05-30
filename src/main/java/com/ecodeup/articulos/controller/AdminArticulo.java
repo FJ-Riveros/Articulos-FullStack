@@ -58,9 +58,11 @@ public class AdminArticulo extends HttpServlet {
       case "editar":
         editar(request, response);
         break;
+
       case "enviarArticulos":
         enviarArticulos(request, response);
         break;
+
       case "borrarArticulo":
         eliminaArticulo(request, response);
         break;
@@ -68,9 +70,15 @@ public class AdminArticulo extends HttpServlet {
       case "devuelveArticulo":
         devuelveArticulo(request, response);
         break;
+
       case "compruebaNombreRepetido":
         compruebaNombre(request, response);
         break;
+
+      case "añadeArticuloCarrito":
+        añadeArticuloCarrito(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -135,4 +143,8 @@ public class AdminArticulo extends HttpServlet {
     response.getWriter().write(json);
   }
 
+  private void añadeArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException, SQLException {
+    articuloDAO.insertarArticuloCarrito(Integer.parseInt(request.getParameter("id")));
+  }
 }
