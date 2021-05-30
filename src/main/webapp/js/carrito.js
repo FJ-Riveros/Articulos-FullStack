@@ -1,5 +1,4 @@
-import {devuelveArticulosCarrito} from "./AJAX.js";
-
+import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
 
 export let muestraCarrito = () =>{
 	$("#carritoInsertar").empty();
@@ -8,6 +7,9 @@ export let muestraCarrito = () =>{
   	devuelveArticulosCarrito().then(articulos=>{
   	$.each(articulos, (index, info) =>{
     	cuerpoCarrito(info);
+		$(".eliminarArticuloCart").click(function(){
+			eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
+		});
  	 })
  	 resolve(true);
   })})
@@ -16,7 +18,7 @@ export let muestraCarrito = () =>{
 	
 let cuerpoCarrito = (info) =>{
 	
-	let inner = `<div class="card w-75">
+	let inner = `<div class="card w-75" id="${info.id}">
   	     		   <div class="card-body">
 				     <div class="headerCard">
     	     	       <h5 class="card-title">${info.nombre}</h5>

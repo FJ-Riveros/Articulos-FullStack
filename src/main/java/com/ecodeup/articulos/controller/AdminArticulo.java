@@ -83,6 +83,10 @@ public class AdminArticulo extends HttpServlet {
         obtenerArticulosCarrito(request, response);
         break;
 
+      case "eliminaArticuloCarrito":
+        eliminaArticuloCarrito(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -160,4 +164,13 @@ public class AdminArticulo extends HttpServlet {
     String json = new Gson().toJson(listaArticulosCarrito);
     response.getWriter().write(json);
   }
+
+  private void eliminaArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    // Articulo articulo =
+    // articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("idArticulo")));
+    int idBorrar = Integer.parseInt(request.getParameter("id"));
+    articuloDAO.eliminarDeCarrito(idBorrar);
+  }
+
 }

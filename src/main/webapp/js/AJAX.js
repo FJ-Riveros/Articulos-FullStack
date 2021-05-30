@@ -1,4 +1,5 @@
 import {generadorCard} from "./adjuntaTarjetas.js";
+import {muestraCarrito} from "./carrito.js"
 //Devuelve todos los artículos que se encuentran en la BDD
 let orden = "Default";
 export let modificaOrden = (nuevaOrden) =>{
@@ -85,4 +86,17 @@ export let devuelveArticulosCarrito = () => {
 		console.log(info);
 	}
     });
+}
+
+//Borra el artículo indicado
+export let eliminaArticuloCarrito= (idArticulo) =>{
+return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "eliminaArticuloCarrito", id: idArticulo},
+    success: function(){
+     muestraCarrito();
+    }
+  });
+    
 }

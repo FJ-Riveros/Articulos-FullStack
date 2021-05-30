@@ -205,4 +205,18 @@ public class ArticuloDAO {
     return listaArticulos;
   }
 
+//eliminar un articulo del carrito
+  public boolean eliminarDeCarrito(int id) throws SQLException {
+    boolean rowEliminar = false;
+    String sql = "DELETE FROM carrito WHERE ArticuloPertenece=?";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setInt(1, id);
+    rowEliminar = statement.executeUpdate() > 0;
+    statement.close();
+    con.desconectar();
+    return rowEliminar;
+  }
+
 }
