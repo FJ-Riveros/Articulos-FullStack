@@ -182,4 +182,27 @@ public class ArticuloDAO {
     return rowInserted;
   }
 
+//listar todos los productos del carrito
+  public List<Articulo> listarArticulosCarrito() throws SQLException {
+    List<Articulo> listaArticulos = new ArrayList<Articulo>();
+    String sql = "SELECT * FROM carrito JOIN articuloscards ON carrito.ArticuloPertenece=articuloscards.ID";
+    // + "WHERE UsuarioPertenece = 1";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    Statement statement = connection.createStatement();
+    ResultSet resulSet = statement.executeQuery(sql);
+
+    while (resulSet.next()) {
+      int id = resulSet.getInt("ID");
+      String nombre = resulSet.getString("nomArticulo");
+      String descripcion = resulSet.getString("descripcionArticulo");
+      Double precio = resulSet.getDouble("precioArticulo");
+      int existencia = resulSet.getInt("stockArticulo");
+      Articulo articulo = new Articulo(id, nombre, descripcion, precio, existencia);
+      listaArticulos.add(articulo);
+    }
+    con.desconectar();
+    return listaArticulos;
+  }
+
 }

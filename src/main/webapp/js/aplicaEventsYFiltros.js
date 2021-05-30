@@ -13,6 +13,7 @@ import { getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
 import {addArticulo} from "./AJAX.js";
 import {ordenacion} from "./ordenacionCards.js";
+import {muestraCarrito} from "./carrito.js";
 export let aplicaEventListennersYFiltros = () => {
   /*Validamos el campo nombre y aplicamos el event listenner
   junto con una restriccion de 15 caracteres max. Con true indicamos que queremos comprobar
@@ -85,4 +86,7 @@ export let aplicaEventListennersYFiltros = () => {
       exponeCamposVacios(".groupModificacion");
     }
   });
+
+  //Listenner del botón del carrito para hacer el fetch de los articulos
+  $("#botonMuestraCarrito").click(muestraCarrito());
 };

@@ -79,6 +79,10 @@ public class AdminArticulo extends HttpServlet {
         añadeArticuloCarrito(request, response);
         break;
 
+      case "obtenerArticulosCarrito":
+        obtenerArticulosCarrito(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -146,5 +150,14 @@ public class AdminArticulo extends HttpServlet {
   private void añadeArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException {
     articuloDAO.insertarArticuloCarrito(Integer.parseInt(request.getParameter("id")));
+  }
+
+  private void obtenerArticulosCarrito(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    List<Articulo> listaArticulosCarrito = articuloDAO.listarArticulosCarrito();
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    String json = new Gson().toJson(listaArticulosCarrito);
+    response.getWriter().write(json);
   }
 }

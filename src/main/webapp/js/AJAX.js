@@ -74,3 +74,15 @@ export let addItemCarrito = (id) =>{
     }
   });
 }
+
+//Devuelve los artículos del carrito
+export let devuelveArticulosCarrito = () => {
+	return $.ajax({
+    url: "adminArticulo",
+    type: "GET",
+    data: {action: "obtenerArticulosCarrito"},
+	success: function(info){
+		console.log(info);
+	}
+    });
+}
