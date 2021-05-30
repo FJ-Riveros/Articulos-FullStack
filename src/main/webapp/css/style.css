@@ -140,6 +140,7 @@ body.dark {
 	text-align: center;
 	position: relative;
 	right: -7px;
+	cursor: pointer;
 }
 .fa-shopping-cart{
 	font-size: 30px;
@@ -169,5 +170,13 @@ body.dark {
 
 .alineacionRight{
 	text-align: right;
-	
+}
+
+.card-title{
+	display: inline;
+}
+
+.headerCard{
+	display:flex;
+	justify-content: space-between;
 }

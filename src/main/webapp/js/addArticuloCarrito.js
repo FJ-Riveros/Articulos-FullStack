@@ -39,10 +39,10 @@ export async function addArticuloCarrito(id){
 	//Listenner para comprobar el número introducido del usuario
 	function eventListennerInput(info){
 		$("#añadirArticuloCarrito").click(async function (){	
-			if($(".inputAddCarrito").value > info.existencia){
+			if($(".inputAddCarrito")[0].value > info.existencia){
 			  adjuntaError(".inputAddCarrito", "No tenemos esa cantidad de producto")
-			}else if($(".inputAddCarrito").value <= 0){
-			  adjuntaError(".inputAddCarrito", "No puedes añadir menos de 1")
+			}else if($(".inputAddCarrito")[0].value <= 0){
+			  adjuntaError(".inputAddCarrito", "Debes añadir algo al carrito")
 			}else{
 			  //LLamada AJAX para añadir el articulo en concreto al carrito
 			  let insertCall = await addItemCarrito(info.id);
