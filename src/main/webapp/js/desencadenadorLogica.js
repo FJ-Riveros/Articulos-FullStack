@@ -15,8 +15,8 @@ $().ready(() => {
 
   //Listenner del botón del carrito para hacer el fetch de los articulos
   $("#botonMuestraCarrito").click(async function(){
-	let muestra = await muestraCarrito();
 	$("#carritoModal").modal('show');
+	let muestra = await muestraCarrito();
 	});	
 
   /*Aplica el listenner al switch de cambio de tema*/
