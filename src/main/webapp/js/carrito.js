@@ -6,8 +6,8 @@ export let muestraCarrito = () =>{
 	return new Promise(resolve =>{
 	//Devuelve los artículos alojados en la BDD
   	devuelveArticulosCarrito().then(articulos=>{
-  	$.each(articulos, (index, articulo) =>{
-    	cuerpoCarrito(articulo);
+  	$.each(articulos, (index, info) =>{
+    	cuerpoCarrito(info);
  	 })
  	 resolve(true);
   })})

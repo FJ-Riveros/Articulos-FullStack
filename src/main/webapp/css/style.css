@@ -21,9 +21,6 @@
   }
 }
 
-/*.form-select{
-	width: 25% !important;
-}*/
 .font-weight-bold {
   font-weight: 900;
 }
@@ -141,10 +138,11 @@ body.dark {
 
 .iconoCart{
 	text-align: center;
+	position: relative;
+	right: -7px;
 }
 .fa-shopping-cart{
 	font-size: 30px;
-	
 }
 
 .botonSinEstilo{

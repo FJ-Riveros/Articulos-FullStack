@@ -78,9 +78,12 @@
   </select>
         </div>
         <div class="col-md-2 offset-md-6 iconoCart">
-          <button type="button" class="botonSinEstilo" data-bs-toggle="modal" data-bs-target="#carritoModal">
+        <!-- <button type="button" id="botonMuestraCarrito" class="botonSinEstilo" data-bs-toggle="modal" data-bs-target="#carritoModal">
   			<i class="fas fa-shopping-cart"></i>
-		  </button>
+		  </button> -->
+           
+  			<i class="fas fa-shopping-cart" id="botonMuestraCarrito"></i>
+		 
         </div>
      </div>
      <!--  -->
@@ -136,13 +139,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="card w-75">
-  			<div class="card-body">
-    		  <h5 class="card-title">Card title</h5>
-    		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    		  <a href="#" class="btn btn-primary">Button</a>
-  		    </div>
-		  </div>
+          
+		  
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
