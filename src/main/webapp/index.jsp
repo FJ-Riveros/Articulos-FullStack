@@ -155,7 +155,7 @@
   <!-- Pop-over para añadir productos al carrito -->
   <div class="modal fade" id="modalArticulo" tabindex="-1" aria-labelledby="modalArticulo" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content" id="addArticuloCart">
         
       </div>
     </div>

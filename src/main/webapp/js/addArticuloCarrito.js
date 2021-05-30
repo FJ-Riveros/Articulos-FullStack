@@ -6,7 +6,7 @@ import {
 } from "./modificadoresVisualesCampos.js";
 
 export async function addArticuloCarrito(id){
-	$(".modal-content").html();	
+	$("#addArticuloCart").html();	
 	let info = await devuelveArticulo(id);
 	adjuntaContent(info);
 	eventListennerInput(info);
@@ -33,20 +33,23 @@ export async function addArticuloCarrito(id){
           <button type="button" class="btn btn-secondary cerrarArticulo" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-primary" id="añadirArticuloCarrito">Añadir</button>
         </div>`;
-		$(".modal-content").html(insertar);
+		$("#addArticuloCart").html(insertar);
 	}
 	
 	//Listenner para comprobar el número introducido del usuario
 	function eventListennerInput(info){
-		$("#añadirArticuloCarrito").click(function (){	
-			if($(".inputAddCarrito")[1].value > info.existencia){
+		$("#añadirArticuloCarrito").click(async function (){	
+			if($(".inputAddCarrito").value > info.existencia){
 			  adjuntaError(".inputAddCarrito", "No tenemos esa cantidad de producto")
-			}else if($(".inputAddCarrito")[1].value <= 0){
+			}else if($(".inputAddCarrito").value <= 0){
 			  adjuntaError(".inputAddCarrito", "No puedes añadir menos de 1")
 			}else{
-				//LLamada base de datos
-			  addItemCarrito(info.id);
-			  $(".cerrarArticulo").click();
+			  //LLamada AJAX para añadir el articulo en concreto al carrito
+			  let insertCall = await addItemCarrito(info.id);
+			  $("#addArticuloCart").html("<h1>Articulo añadido al carrito</h1>");		
+			  setTimeout(function(){
+			    $("#modalArticulo").modal('hide');
+			}, 2000);
 			  eliminaError(".inputAddCarrito");
 			  campoCorrecto(".inputAddCarrito");
 			}
