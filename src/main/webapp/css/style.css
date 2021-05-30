@@ -176,7 +176,11 @@ body.dark {
 	display: inline;
 }
 
-.headerCard{
+.align-between{
 	display:flex;
 	justify-content: space-between;
+}
+
+.eliminarArticuloCart{
+	display: none;
 }
