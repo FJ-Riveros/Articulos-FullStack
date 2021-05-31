@@ -7,6 +7,7 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
   	//Devuelve los artículos del carrito alojados en la BDD
     let articulosCarrito = await devuelveArticulosCarrito();
 	if(articulosCarrito.length != 0){
+	  $(".comprarCarrito").prop('disabled', false);
   	  $.each(articulosCarrito, (index, info) =>{
     	  cuerpoCarrito(info);
 		  $(".eliminarArticuloCart").click(function(){
@@ -21,6 +22,7 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
  	   });
 	}else{
 		$("#carritoInsertar").html("<p>El carrito está vacio, seleccione un artículo pulsando en '+'.</p>");
+		$(".comprarCarrito").prop('disabled', true);
 	}
 }
 	

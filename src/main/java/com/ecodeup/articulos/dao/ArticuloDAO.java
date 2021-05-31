@@ -186,7 +186,6 @@ public class ArticuloDAO {
   public List<Articulo> listarArticulosCarrito() throws SQLException {
     List<Articulo> listaArticulos = new ArrayList<Articulo>();
     String sql = "SELECT * FROM carrito JOIN articuloscards ON carrito.ArticuloPertenece=articuloscards.ID";
-    // + "WHERE UsuarioPertenece = 1";
     con.conectar();
     connection = con.getJdbcConnection();
     Statement statement = connection.createStatement();
@@ -205,7 +204,7 @@ public class ArticuloDAO {
     return listaArticulos;
   }
 
-//eliminar un articulo del carrito
+  // Eliminar un articulo del carrito
   public boolean eliminarDeCarrito(int id) throws SQLException {
     boolean rowEliminar = false;
     String sql = "DELETE FROM carrito WHERE ArticuloPertenece=?";
@@ -217,6 +216,19 @@ public class ArticuloDAO {
     statement.close();
     con.desconectar();
     return rowEliminar;
+  }
+
+  // Elimina todos los artículos del carrito
+  public boolean eliminarTodosDeCarrito() throws SQLException {
+    boolean resultado = false;
+    String sql = "DELETE FROM carrito";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    resultado = statement.executeUpdate() > 0;
+    statement.close();
+    con.desconectar();
+    return resultado;
   }
 
 }

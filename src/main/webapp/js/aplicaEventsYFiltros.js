@@ -11,7 +11,7 @@ import {
 import{reseteaComprobacion, validaComprobacion} from "./apruebaForm.js";
 import { getValues } from "./adjuntaTarjetas.js";
 import { modificaTarjeta } from "./modificadorTarjeta.js";
-import {addArticulo} from "./AJAX.js";
+import {addArticulo , eliminaTodoCarrito,devuelveArticulosCarrito} from "./AJAX.js";
 import {ordenacion} from "./ordenacionCards.js";
 
 export let aplicaEventListennersYFiltros = () => {
@@ -85,5 +85,14 @@ export let aplicaEventListennersYFiltros = () => {
       //Señala los campos vacios del form
       exponeCamposVacios(".groupModificacion");
     }
-  });
+  });	
+
+//Vacia el carrito cuando se compra.
+  $(".comprarCarrito").click(async function(){
+    let elimina = await eliminaTodoCarrito();
+      $("#carritoInsertar").html(`<div class="mensajeAñadir"><i class="fas fa-check"></i><p>Compra realizada</p><div>`);		
+      setTimeout(function(){
+	    $("#carritoModal").modal('hide');
+	  }, 2000);
+  });	
 };

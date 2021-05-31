@@ -19,7 +19,7 @@ export async function addArticuloCarrito(id){
         </div>
         <div class="modal-body">
           <p class="mb-1">Cantidad</p>
-	      <input type="number" class="w-25 inputAddCarrito mb-4">
+	      <input type="number" class="w-25 inputAddCarrito mb-2">
           <p>${info.descripcion}</p>
 		  <div class="align-between text-secondary">		
 		    <p class="mb-0 font-weight-medium">${info.precio}€/Unidad<p>

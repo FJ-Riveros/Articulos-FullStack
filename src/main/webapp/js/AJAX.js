@@ -83,12 +83,12 @@ export let devuelveArticulosCarrito = () => {
     type: "GET",
     data: {action: "obtenerArticulosCarrito"},
 	success: function(info){
-		console.log(info);
+	
 	}
     });
 }
 
-//Borra el artículo indicado
+//Borra el artículo del carrito indicado
 export let eliminaArticuloCarrito= (idArticulo) =>{
 return $.ajax({
     url: "adminArticulo",
@@ -98,5 +98,16 @@ return $.ajax({
      muestraCarrito();
     }
   });
-    
+}
+
+//Elimina todos los artículos del carrito
+export let eliminaTodoCarrito= () =>{
+return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "eliminaTodosCarrito"},
+    success: function(){
+     //muestraCarrito();
+    }
+  });
 }

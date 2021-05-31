@@ -87,6 +87,10 @@ public class AdminArticulo extends HttpServlet {
         eliminaArticuloCarrito(request, response);
         break;
 
+      case "eliminaTodosCarrito":
+        eliminaTodosCarrito(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -167,10 +171,13 @@ public class AdminArticulo extends HttpServlet {
 
   private void eliminaArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
       throws SQLException, ServletException, IOException {
-    // Articulo articulo =
-    // articuloDAO.obtenerPorId(Integer.parseInt(request.getParameter("idArticulo")));
     int idBorrar = Integer.parseInt(request.getParameter("id"));
     articuloDAO.eliminarDeCarrito(idBorrar);
+  }
+
+  private void eliminaTodosCarrito(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    articuloDAO.eliminarTodosDeCarrito();
   }
 
 }

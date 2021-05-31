@@ -78,12 +78,7 @@
   </select>
         </div>
         <div class="col-md-2 offset-md-6 iconoCart">
-        <!-- <button type="button" id="botonMuestraCarrito" class="botonSinEstilo" data-bs-toggle="modal" data-bs-target="#carritoModal">
-  			<i class="fas fa-shopping-cart"></i>
-		  </button> -->
-           
-  			<i class="fas fa-shopping-cart" id="botonMuestraCarrito"></i>
-		 
+       	  <i class="fas fa-shopping-cart" id="botonMuestraCarrito"></i>
         </div>
      </div>
      <!--  -->
@@ -142,7 +137,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Comprar</button>
+          <button type="button" class="btn btn-primary comprarCarrito">Comprar</button>
         </div>
       </div>
     </div>

@@ -18,6 +18,8 @@ $().ready(() => {
 	let muestra = await muestraCarrito();
 	});	
 	
+  
+	
   /*Aplica el listenner al switch de cambio de tema*/
   $("#chk").change(() =>{
     document.body.classList.toggle('dark');
