@@ -12,13 +12,12 @@ $().ready(() => {
   //Cargamos directamente las tarjetas de la BDD
   generadorCard();
 
-
   //Listenner del botón del carrito para hacer el fetch de los articulos
   $("#botonMuestraCarrito").click(async function(){
 	$("#carritoModal").modal('show');
 	let muestra = await muestraCarrito();
 	});	
-
+	
   /*Aplica el listenner al switch de cambio de tema*/
   $("#chk").change(() =>{
     document.body.classList.toggle('dark');

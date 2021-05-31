@@ -1,24 +1,27 @@
 import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
 
-export let muestraCarrito = () =>{
+ export async function muestraCarrito (){
+	//Vaciamos el carrito 
 	$("#carritoInsertar").empty();
-	return new Promise(resolve =>{
-	//Devuelve los artículos del carrito alojados en la BDD
-  	devuelveArticulosCarrito().then(articulos=>{
-  	$.each(articulos, (index, info) =>{
-    	cuerpoCarrito(info);
-		$(".eliminarArticuloCart").click(function(){
-			eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
-		});
+	
+  	//Devuelve los artículos del carrito alojados en la BDD
+    let articulosCarrito = await devuelveArticulosCarrito();
+	if(articulosCarrito.length != 0){
+  	  $.each(articulosCarrito, (index, info) =>{
+    	  cuerpoCarrito(info);
+		  $(".eliminarArticuloCart").click(function(){
+	        eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
+		  });
 		
-		$(".card-body").hover(function(){
+		  $(".card-body").hover(function(){
 			$(this).find("button").css("display", "unset");	
-		}, function(){
+		  }, function(){
 			$(this).find("button").css("display", "none");
-		});
- 	 })
- 	 resolve(true);
-  })})
+		  });
+ 	   });
+	}else{
+		$("#carritoInsertar").html("<p>El carrito está vacio, seleccione un artículo pulsando en '+'.</p>");
+	}
 }
 	
 let cuerpoCarrito = (info) =>{
