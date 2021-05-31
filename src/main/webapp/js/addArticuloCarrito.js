@@ -46,7 +46,7 @@ export async function addArticuloCarrito(id){
 			  $("#addArticuloCart").html(`<div class="mensajeAñadir"><i class="fas fa-check"></i><p>Articulo añadido al carrito</p><div>`);		
 			  setTimeout(function(){
 			    $("#modalArticulo").modal('hide');
-			}, 2000);
+			}, 1500);
 			  eliminaError(".inputAddCarrito");
 			  campoCorrecto(".inputAddCarrito");
 			}

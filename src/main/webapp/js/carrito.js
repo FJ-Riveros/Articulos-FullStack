@@ -10,16 +10,17 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
 	  $(".comprarCarrito").prop('disabled', false);
   	  $.each(articulosCarrito, (index, info) =>{
     	  cuerpoCarrito(info);
-		  $(".eliminarArticuloCart").click(function(){
-	        eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
-		  });
+		  
+ 	   });
+	  $(".eliminarArticuloCart").click(function(){
+ 	     eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
+	   });
 		
-		  $(".card-body").hover(function(){
-			$(this).find("button").css("display", "unset");	
-		  }, function(){
+	  $(".card-body").hover(function(){
+		$(this).find("button").css("display", "unset");	
+		 }, function(){
 			$(this).find("button").css("display", "none");
 		  });
- 	   });
 	}else{
 		$("#carritoInsertar").html("<p>El carrito está vacio, seleccione un artículo pulsando en '+'.</p>");
 		$(".comprarCarrito").prop('disabled', true);

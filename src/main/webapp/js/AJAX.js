@@ -82,8 +82,7 @@ export let devuelveArticulosCarrito = () => {
     url: "adminArticulo",
     type: "GET",
     data: {action: "obtenerArticulosCarrito"},
-	success: function(info){
-	
+	success: function(){
 	}
     });
 }
