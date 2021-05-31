@@ -25,16 +25,18 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
 }
 	
 let cuerpoCarrito = (info) =>{
-	let inner = `<div class="card w-75" id="${info.id}">
+	let inner = `<div class="card w-75 cuerpoArticuloCarrito shadow" id="${info.id}">
   	     		   <div class="card-body">
 				     <div class="align-between" id="cabecera">
     	     	       <h5 class="card-title">${info.nombre}</h5>
 					   <button type="button" class="btn-close eliminarArticuloCart"></button>
 					 </div>
     		        <p class="card-text">${info.descripcion}</p>
-    		        <div class="align-between"><p class="card-text">${info.precio}€/Unidad</p>
-					  <p class="card-text">${info.existencia} Unidades</p>
+    		        <div class="align-between text-secondary font-weight-medium">
+					  ${info.precio}€/Unidad</p>
+					  <p class="card-text font-weight-medium">${info.existencia} Unidades</p>
 					</div>
+					<p class="card-text font-weight-medium mt-2">Subtotal ${info.existencia * info.precio}€</p>
   		          </div>
 			   </div>`
 

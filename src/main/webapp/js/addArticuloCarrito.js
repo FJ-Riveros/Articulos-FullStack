@@ -18,16 +18,13 @@ export async function addArticuloCarrito(id){
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-	      	<div class="row">
-			  <div class="col-8">
-                <p>${info.descripcion}</p>
-			  </div>
-			  <div class="col-4 alineacionRight">
-                <input type="number" class="w-50 inputAddCarrito">
-			  </div>
-		  	</div>
-		  <p class="mb-0">${info.precio}€/Unidad<p>
-		  <p class="mb-0">${info.existencia} Unidades disponibles<p>
+          <p class="mb-1">Cantidad</p>
+	      <input type="number" class="w-25 inputAddCarrito mb-4">
+          <p>${info.descripcion}</p>
+		  <div class="align-between text-secondary">		
+		    <p class="mb-0 font-weight-medium">${info.precio}€/Unidad<p>
+		    <p class="mb-0 font-weight-medium">${info.existencia} Unidades disponibles<p>
+           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary cerrarArticulo" data-bs-dismiss="modal">Cancelar</button>

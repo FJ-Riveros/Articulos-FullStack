@@ -46,7 +46,7 @@ export const adjuntarTarjeta = (articulo) => {
               ${articulo.precio}€
             </div>
             <div class=" col-7 flex-end font-weight-medium ">
-              Cantidad: ${articulo.existencia}
+              Unidades: ${articulo.existencia}
             </div>
           </div>
       </div>
