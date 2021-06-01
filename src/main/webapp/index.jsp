@@ -155,7 +155,7 @@
   
   <!-- Pop-over para pedir confirmación al borrar una card-->
   <div class="modal fade" id="modalBorrado" tabindex="-1" aria-labelledby="modalBorrado" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modalAncho">
       <div class="modal-content" id="confirmacionBorrado">
         
       </div>

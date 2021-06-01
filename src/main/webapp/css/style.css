@@ -203,7 +203,7 @@ body.dark {
 
 
 #ConfirmacionBorrado{
-	width: 30vw;
+	width: 55vw;
 }
 
 .innerConfirmacionBorrado{
@@ -223,4 +223,9 @@ body.dark {
 
 .cuerpoArticuloCarrito{
 	margin-top: 20px;
+}
+
+
+.modalAncho{
+	max-width: 50vw !important;
 }
