@@ -42,7 +42,7 @@ export async function addArticuloCarrito(id){
 			  adjuntaError(".inputAddCarrito", "Debes añadir algo al carrito")
 			}else{
 			  //LLamada AJAX para añadir el articulo en concreto al carrito
-			  let insertCall = await addItemCarrito(info.id);
+			  let insertCall = await addItemCarrito(info.id,$(".inputAddCarrito")[0].value);
 			  $("#addArticuloCart").html(`<div class="mensajeAñadir"><i class="fas fa-check"></i><p>Articulo añadido al carrito</p><div>`);		
 			  setTimeout(function(){
 			    $("#modalArticulo").modal('hide');

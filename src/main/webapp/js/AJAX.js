@@ -65,11 +65,11 @@ export let compruebaNombre = (nombre) =>{
 };
 
 //Añade un articulo al carrito
-export let addItemCarrito = (id) =>{
+export let addItemCarrito = (id, cantidad) =>{
 	return $.ajax({
     url: "adminArticulo",
     type: "POST",
-    data: {action: "añadeArticuloCarrito", id: id},
+    data: {action: "añadeArticuloCarrito", id: id, cantidad: cantidad},
     success: function(){
      generadorCard();
     }

@@ -157,7 +157,8 @@ public class AdminArticulo extends HttpServlet {
 
   private void añadeArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException {
-    articuloDAO.insertarArticuloCarrito(Integer.parseInt(request.getParameter("id")));
+    articuloDAO.insertarArticuloCarrito(Integer.parseInt(request.getParameter("id")),
+        Integer.parseInt(request.getParameter("cantidad")));
   }
 
   private void obtenerArticulosCarrito(HttpServletRequest request, HttpServletResponse response)

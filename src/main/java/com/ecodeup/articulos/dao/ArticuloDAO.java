@@ -166,8 +166,8 @@ public class ArticuloDAO {
   }
 
   // insertar artículo en el carrito
-  public boolean insertarArticuloCarrito(int id) throws SQLException {
-    String sql = "INSERT INTO carrito (IdEmparejamiento, UsuarioPertenece, ArticuloPertenece) VALUES (?,?, ?)";
+  public boolean insertarArticuloCarrito(int id, int cantidad) throws SQLException {
+    String sql = "INSERT INTO carrito (IdEmparejamiento, UsuarioPertenece, ArticuloPertenece, Cantidad) VALUES (?,?,?,?)";
 
     con.conectar();
     connection = con.getJdbcConnection();
@@ -176,6 +176,7 @@ public class ArticuloDAO {
     // Siempre pertenece al usuario 1 como prueba
     statement.setInt(2, 1);
     statement.setInt(3, id);
+    statement.setInt(4, cantidad);
     boolean rowInserted = statement.executeUpdate() > 0;
     statement.close();
     con.desconectar();
