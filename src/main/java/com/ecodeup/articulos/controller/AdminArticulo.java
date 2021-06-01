@@ -99,6 +99,10 @@ public class AdminArticulo extends HttpServlet {
         restaArticulo(request, response);
         break;
 
+      case "devuelveArticuloCarrito":
+        devuelveArticuloCarrito(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -203,6 +207,17 @@ public class AdminArticulo extends HttpServlet {
       throws SQLException, ServletException, IOException {
     articuloDAO.restarAArticulo(Integer.parseInt(request.getParameter("id")),
         Integer.parseInt(request.getParameter("restaArticulo")));
+  }
+
+  // Devuelve la cantidad de un articulo del carrito en concreto
+  private void devuelveArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    int cantidadUnProducto = articuloDAO
+        .devuelveCantidadUnProductoCarrito(Integer.parseInt(request.getParameter("id")));
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    String json = new Gson().toJson(cantidadUnProducto);
+    response.getWriter().write(json);
   }
 
 }

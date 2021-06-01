@@ -262,4 +262,20 @@ public class ArticuloDAO {
     return rowActualizar;
   }
 
+//listar solo la cantidad de un producto del carrito
+  public int devuelveCantidadUnProductoCarrito(int id) throws SQLException {
+    String sql = "SELECT * FROM carrito WHERE ArticuloPertenece= ?";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setInt(1, id);
+    ResultSet resulSet = statement.executeQuery();
+    int cantidad = 0;
+    if (resulSet.next()) {
+      cantidad = resulSet.getInt("Cantidad");
+    }
+    con.desconectar();
+    return cantidad;
+  }
+
 }

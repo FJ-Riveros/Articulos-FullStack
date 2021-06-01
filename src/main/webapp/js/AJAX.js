@@ -71,7 +71,6 @@ export let addItemCarrito = (id, cantidad) =>{
     type: "POST",
     data: {action: "añadeArticuloCarrito", id: id, cantidad: cantidad},
     success: function(){
-     generadorCard();
     }
   });
 }
@@ -106,7 +105,6 @@ return $.ajax({
     type: "POST",
     data: {action: "eliminaTodosCarrito"},
     success: function(){
-     //muestraCarrito();
     }
   });
 }
@@ -118,7 +116,7 @@ return $.ajax({
     type: "POST",
     data: {action: "sumaArticulo", id:id, sumaArticulo: cantidadSumar},
     success: function(){
-     generadorCard();
+	generadorCard();
     }
   });
 }
@@ -130,7 +128,18 @@ return $.ajax({
     type: "POST",
     data: {action: "restaArticulo", id:id, restaArticulo: cantidadRestar},
     success: function(){
-     generadorCard();
+	generadorCard();
+    }
+  });
+}
+
+//Devuelve la cantidad de un articulo del carrito en concreto
+export let devuelveCantidadArticuloCarrito = (id) =>{
+return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "devuelveArticuloCarrito", id:id},
+    success: function(){
     }
   });
 }

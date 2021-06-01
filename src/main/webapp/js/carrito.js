@@ -1,4 +1,4 @@
-import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
+import {devuelveArticulosCarrito, eliminaArticuloCarrito, sumaArticulo, devuelveCantidadArticuloCarrito} from "./AJAX.js";
 
  export async function muestraCarrito (){
 	//Vaciamos el carrito 
@@ -13,9 +13,11 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
 		  
  	   });
 	  //Como obtener el ID que necesitamos
-	  $(".eliminarArticuloCart").click(function(){
+	  $(".eliminarArticuloCart").click(async function(){
 		let identificador = $(this).parents(".card").attr("id");
- 	     eliminaArticuloCarrito(identificador);	
+		let cantidadArticuloCarrito = await devuelveCantidadArticuloCarrito(identificador);
+		sumaArticulo(identificador, cantidadArticuloCarrito);
+ 	    eliminaArticuloCarrito(identificador);	
 	   });
 		
 	  $(".card-body").hover(function(){
