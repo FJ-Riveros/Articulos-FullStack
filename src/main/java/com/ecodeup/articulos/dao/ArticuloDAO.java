@@ -235,7 +235,7 @@ public class ArticuloDAO {
   // sumaArticulo
   public boolean sumarAArticulo(int id, int cantidadASumar) throws SQLException {
     boolean rowActualizar = false;
-    String sql = "UPDATE articuloscards SET stockArticulo+=? WHERE ID=?";
+    String sql = "UPDATE articuloscards SET stockArticulo=stockArticulo+? WHERE ID=?";
     con.conectar();
     connection = con.getJdbcConnection();
     PreparedStatement statement = connection.prepareStatement(sql);
@@ -250,7 +250,7 @@ public class ArticuloDAO {
   // restaArticulo
   public boolean restarAArticulo(int id, int cantidadARestar) throws SQLException {
     boolean rowActualizar = false;
-    String sql = "UPDATE articuloscards SET stockArticulo-=? WHERE ID=?";
+    String sql = "UPDATE articuloscards SET stockArticulo=stockArticulo-? WHERE ID=?";
     con.conectar();
     connection = con.getJdbcConnection();
     PreparedStatement statement = connection.prepareStatement(sql);
