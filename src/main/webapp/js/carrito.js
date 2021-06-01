@@ -12,8 +12,10 @@ import {devuelveArticulosCarrito, eliminaArticuloCarrito} from "./AJAX.js";
     	  cuerpoCarrito(info);
 		  
  	   });
+	  //Como obtener el ID que necesitamos
 	  $(".eliminarArticuloCart").click(function(){
- 	     eliminaArticuloCarrito($(this).parents(".card").attr("id"));	
+		let identificador = $(this).parents(".card").attr("id");
+ 	     eliminaArticuloCarrito(identificador);	
 	   });
 		
 	  $(".card-body").hover(function(){
