@@ -1,8 +1,9 @@
 import { adjuntarTarjeta } from "./adjuntaTarjetas.js";
 import { vaciarCampos, eliminaError } from "./modificadoresVisualesCampos.js";
 import { rellenaCamposModificacion } from "./rellenaCamposModificacion.js";
-import {devuelveArticulos, borraArticulo} from "./AJAX.js";
+import {devuelveArticulos, borraArticulo, devuelveArticulo} from "./AJAX.js";
 import {addArticuloCarrito} from "./addArticuloCarrito.js";
+import {adjuntaTarjetaBorrado} from "./modalConfirmacionBorrado.js"
 
 
 //Recorre el registro y muestra todas las Cards
@@ -62,10 +63,20 @@ export async function listennerCard(idCard) {
   });
 
   //Funcionalidad de borrado
-  $(`${idCard} div.card-header img.delete`).click( function () {
+  $(`${idCard} div.card-header img.delete`).click( async function () {
     let id = $(this).parents(".card").attr("id").slice(5);
-    //Eliminamos la entrada y mostramos las cards
-    eliminaRegistro(id);
+	let articulo = await devuelveArticulo(id);
+	console.log("funciono")
+  	adjuntaTarjetaBorrado(articulo);
+	//Si pulsamos eliminar borramos el articulo, acto seguido mostramos las cards
+	$("#eliminarArticulosCarrito").click(() =>{
+		//Eliminamos la card
+		eliminaRegistro(id)
+		//Escondemos el modal
+		$("#modalBorrado").modal('hide');
+	})
+	
+	
   });
 
   //Listenner del card para mostrar los iconos

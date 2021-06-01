@@ -152,6 +152,16 @@
     </div>
   </div>
   <!--  -->
+  
+  <!-- Pop-over para pedir confirmación al borrar una card-->
+  <div class="modal fade" id="modalBorrado" tabindex="-1" aria-labelledby="modalBorrado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content" id="confirmacionBorrado">
+        
+      </div>
+    </div>
+  </div>
+  <!--  -->
     
   <script type="module" src="${pageContext.request.contextPath}/js/desencadenadorLogica.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
