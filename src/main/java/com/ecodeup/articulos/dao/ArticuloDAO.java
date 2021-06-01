@@ -197,7 +197,7 @@ public class ArticuloDAO {
       String nombre = resulSet.getString("nomArticulo");
       String descripcion = resulSet.getString("descripcionArticulo");
       Double precio = resulSet.getDouble("precioArticulo");
-      int existencia = resulSet.getInt("stockArticulo");
+      int existencia = resulSet.getInt("Cantidad");
       Articulo articulo = new Articulo(id, nombre, descripcion, precio, existencia);
       listaArticulos.add(articulo);
     }
