@@ -232,4 +232,34 @@ public class ArticuloDAO {
     return resultado;
   }
 
+  // sumaArticulo
+  public boolean sumarAArticulo(int id, int cantidadASumar) throws SQLException {
+    boolean rowActualizar = false;
+    String sql = "UPDATE articuloscards SET stockArticulo+=? WHERE ID=?";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setInt(1, cantidadASumar);
+    statement.setInt(2, id);
+    rowActualizar = statement.executeUpdate() > 0;
+    statement.close();
+    con.desconectar();
+    return rowActualizar;
+  }
+
+  // restaArticulo
+  public boolean restarAArticulo(int id, int cantidadARestar) throws SQLException {
+    boolean rowActualizar = false;
+    String sql = "UPDATE articuloscards SET stockArticulo-=? WHERE ID=?";
+    con.conectar();
+    connection = con.getJdbcConnection();
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setInt(1, cantidadARestar);
+    statement.setInt(2, id);
+    rowActualizar = statement.executeUpdate() > 0;
+    statement.close();
+    con.desconectar();
+    return rowActualizar;
+  }
+
 }

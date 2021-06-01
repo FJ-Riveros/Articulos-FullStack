@@ -1,4 +1,4 @@
-import {devuelveArticulo, addItemCarrito} from "./AJAX.js";
+import {devuelveArticulo, addItemCarrito, restaArticulo} from "./AJAX.js";
 import {
   adjuntaError,
   eliminaError,
@@ -43,6 +43,8 @@ export async function addArticuloCarrito(id){
 			}else{
 			  //LLamada AJAX para añadir el articulo en concreto al carrito
 			  let insertCall = await addItemCarrito(info.id,$(".inputAddCarrito")[0].value);
+			  //Resta la cantidad correspondiente al articulo que se introduce en el carrito
+			  restaArticulo(info.id, $(".inputAddCarrito")[0].value);
 			  $("#addArticuloCart").html(`<div class="mensajeAñadir"><i class="fas fa-check"></i><p>Articulo añadido al carrito</p><div>`);		
 			  setTimeout(function(){
 			    $("#modalArticulo").modal('hide');

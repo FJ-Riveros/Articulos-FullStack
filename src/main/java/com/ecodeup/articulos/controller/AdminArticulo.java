@@ -91,6 +91,14 @@ public class AdminArticulo extends HttpServlet {
         eliminaTodosCarrito(request, response);
         break;
 
+      case "sumaArticulo":
+        sumaArticulo(request, response);
+        break;
+
+      case "restaArticulo":
+        restaArticulo(request, response);
+        break;
+
       default:
       }
     } catch (SQLException e) {
@@ -170,15 +178,31 @@ public class AdminArticulo extends HttpServlet {
     response.getWriter().write(json);
   }
 
+  // Elimina el artículo del carrito indicado
   private void eliminaArticuloCarrito(HttpServletRequest request, HttpServletResponse response)
       throws SQLException, ServletException, IOException {
     int idBorrar = Integer.parseInt(request.getParameter("id"));
     articuloDAO.eliminarDeCarrito(idBorrar);
   }
 
+  // Elimina todos los artículos del carrito
   private void eliminaTodosCarrito(HttpServletRequest request, HttpServletResponse response)
       throws SQLException, ServletException, IOException {
     articuloDAO.eliminarTodosDeCarrito();
+  }
+
+  // Suma la cantidad indicada a un articulo
+  private void sumaArticulo(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    articuloDAO.sumarAArticulo(Integer.parseInt(request.getParameter("id")),
+        Integer.parseInt(request.getParameter("sumaArticulo")));
+  }
+
+  // Resta la cantidad indicada a un articulo
+  private void restaArticulo(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, ServletException, IOException {
+    articuloDAO.restarAArticulo(Integer.parseInt(request.getParameter("id")),
+        Integer.parseInt(request.getParameter("restaArticulo")));
   }
 
 }

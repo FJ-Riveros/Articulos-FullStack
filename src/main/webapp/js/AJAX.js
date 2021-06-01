@@ -110,3 +110,27 @@ return $.ajax({
     }
   });
 }
+
+//Suma a la cantidad de un articulo en concreto
+export let sumaArticulo= (id, cantidadSumar) =>{
+return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "sumaArticulo", id:id, sumaArticulo: cantidadSumar},
+    success: function(){
+     generadorCard();
+    }
+  });
+}
+
+//Resta a la cantidad de un articulo en concreto
+export let restaArticulo= (id, cantidadRestar) =>{
+return $.ajax({
+    url: "adminArticulo",
+    type: "POST",
+    data: {action: "restaArticulo", id:id, restaArticulo: cantidadRestar},
+    success: function(){
+     generadorCard();
+    }
+  });
+}
